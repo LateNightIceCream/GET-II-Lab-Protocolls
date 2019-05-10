@@ -29,7 +29,21 @@
 
 \setlength{\jot}{10pt} %indents
 
-\usepackage{circuitikz}
+
+\newcommand*\dif{\mathop{}\!\mathrm{d}}
+
+%%========================================
+%% circuitikz properties
+\usepackage[european, straightvoltages]{circuitikz}
+%\ctikzset{voltage=german}
+%\ctikzset{voltage/distance from node  =.5}% in \pgf@circ@Rlen units
+%\ctikzset{voltage/distance from line  =.25}% pos. between 0 and 1
+%\ctikzset{voltage/bump b/.initial     =1.5}%
+
+\ctikzset{current/distance            = .618}
+
+
+%%========================================
 
 %%
 %% Path settings
@@ -42,11 +56,6 @@
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %\begin{titlepage}
-    %\clearpage
-    %\maketitle
-    %\thispagestyle{empty}
-  %\end{titlepage}
   \includepdf{./titlepage/titlepage.pdf}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -66,7 +75,7 @@
   (3)\\
   \begin{center}
     \begin{circuitikz}[european voltages, european resistors]
-      \draw (0,0) to[R, l=$R$, i=$i(t)$, v=$u_R$, color = black] (2,0);
+      \draw (0,0) to[R, l=$R$, i=$i(t)$, v=$u_R(t)$, color = black] (2,0);
     \end{circuitikz}
 
     \begin{align*}
@@ -82,12 +91,12 @@
   \begin{center}
     %inductance
     \begin{circuitikz}[european voltages, european inductors]
-      \draw (0,0) to[L, l=$L$, i=$i(t)$, v=$u_L$, color = black] (2,0);
+      \draw (0,0) to[L, l=$L$, i=$i(t)$, v=$u_L(t)$, color = black] (2,0);
     \end{circuitikz}
 
     \begin{align*}
-      u_L(t)  & = L \cdot \frac{\text{d}i(t)}{\text{d} t}\\
-              & = L  \cdot \hat{I} \cdot \frac{\text{d}}{\text{d} t}\left( \cos(\omega t + \phi_i)\right)\\
+      u_L(t)  & = L \cdot \frac{\dif i(t)}{\dif t}\\
+              & = L  \cdot \hat{I} \cdot \frac{\dif}{\dif t}\left( \cos(\omega t + \phi_i)\right)\\
               & = -\underbrace{ \omega \cdot L \cdot \hat{I} }_{ \mathclap{\hat{U}_L} } \cdot \sin(\omega t + \phi_i)\\
       \intertext{Um die Spannung ($-\sin{x}$) wieder durch $\cos{x}$ auszudrücken, muss auf den ursprünglichen Phasenwinkel $\pi / 2$ addiert werden:}
       \Aboxed{ u_L(t)  & = \hat{U}_L \cdot \cos(\omega t + \underbrace{\phi_i + \frac{\pi}{2}}_{ \mathclap{\phi_u}})}\\
@@ -99,12 +108,12 @@
   \begin{center}
     %capacitance
     \begin{circuitikz}[european voltages, european resistors]
-      \draw (0,0) to[C, l=$C$, i=$i(t)$, v=$u_C$, color = black] (2,0);
+      \draw (0,0) to[C, l=$C$, i=$i(t)$, v=$u_C(t)$, color = black] (2,0);
     \end{circuitikz}
 
     \begin{align*}
-      u_C(t) & = \frac{\hat{I}}{C} \cdot \int_0^t{i(t) \text{d}t}\\
-             & = \frac{\hat{I}}{C} \cdot \int_0^t{ \cos{(\omega t + \phi_i)} \text{d}t}\\
+      u_C(t) & = \frac{\hat{I}}{C} \cdot \int_0^t{i(t) \dif t}\\
+             & = \frac{\hat{I}}{C} \cdot \int_0^t{ \cos{(\omega t + \phi_i)} \dif t}\\
              & = \frac{\hat{I}}{C} \cdot \frac{1}{\omega} [\sin{(\omega t + \phi_i)}]_0^t + \underbrace{U_0}_{\mathclap{\text{initialer Ladezustand}}}\\
              & = \underbrace{\frac{\hat{I}}{C \cdot \omega}}_{\mathclap{\hat{U}_C}} [\sin{(\omega t + \phi_i)} - \sin{(\phi_i)}] + U_0\\
        \intertext{Um die Spannung ($\sin{x}$) wieder durch $\cos{x}$ auszudrücken, muss von dem ursprünglichen Phasenwinkel $\pi / 2$ subtrahiert werden:}
@@ -123,17 +132,15 @@
 
   (4)\\
   \begin{gather*}
-    u_L(t)  = L \cdot \frac{\text{d}i(t)}{\text{d} t}\\
-    d i(t)  = \frac{1}{L} \cdot u_L(t) dt\\
-
-    \begin{align*}
-      \begin{center} % broken here :)
-      i(t)  & = \frac{1}{L} \cdot \int{u_L(t) dt}\\
-      i  & = \frac{1}{L} \cdot \int{u_L(t) dt}\\
-    \end{align*}
-    \end{center}
+        u_L(t) = L \cdot \frac{\dif i(t)}{\dif t}\\
+    \dif i(t)  = \frac{1}{L} \cdot u_L(t) \dif t\\
+        i(t)   = \frac{1}{L} \cdot \int_0^t{u_L(t) \dif t} + i_0\\
   \end{gather*}
-  (5)\\
+  \indent(5)\\
+  \begin{gather*}
+    u_C(t)   = \frac{1}{C} \cdot \int_0^t{i(t) \dif t}\\
+    i(t)     = C \cdot \frac{\dif u_C(t)}{\dif t}\\
+  \end{gather*}
 
 %1.3
 \subsection{}

@@ -1,5 +1,4 @@
-#RC Tiefpassfilter
-
+# RL Hochpassfilter
 library(ggplot2)
 
 options(scipen=10000)
@@ -13,7 +12,7 @@ ybreaks = ybreaks[-8] # ybreaks without 0.7 (8th element)
 output_width  <- 10
 output_height <- output_width * 0.6180339887498948
 
-data <- read.csv(file = "RC_LP.csv")
+data <- read.csv(file = "RL_HP.csv")
 
 dataU1    <- data$u1
 dataU2    <- data$u2
@@ -26,9 +25,9 @@ displaydata <- data.frame(x=dataX, y=dataY)
 ylabel <- bquote( over( "|" ~ underline("U")[2] ~ "|"  , "|" ~ underline("U")[1] ~ "|") )
 xlabel <- bquote( over( "f", "f"[g]))
 
-rc_fun<- function(f) {1 / sqrt(1 + (f)^2)}
+rc_fun<- function(f) {1 / sqrt(1 + 1/(f)^2)}
 
-pdf("RC_LP.pdf", width = output_width, height = output_height, )
+pdf("RL_HP.pdf", width = output_width, height = output_height, )
 
 ####################################################################
 
@@ -36,7 +35,7 @@ p9 <- ggplot(displaydata, aes(dataX, dataY)) +
 
         theme_minimal() + # maybe theme_bw()
 
-        ggtitle("Betragsgang: RC - Tiefpassfilter") +
+        ggtitle("Betragsgang: RL - Hochpassfilter") +
 
         stat_function(aes(color = "he world"), fun = rc_fun, colour = "dodgerblue3")+
 
