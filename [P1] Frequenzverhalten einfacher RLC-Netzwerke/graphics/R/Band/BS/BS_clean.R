@@ -21,11 +21,12 @@ dataX     <- data$ffg
 dataY     <- dataU2/dataU1
 displaydata <- data.frame(x=dataX, y=dataY)
 
+min <- 0.05;
 
 ylabel <- bquote( over( "|" ~ underline("U")[2] ~ "|"  , "|" ~ underline("U")[1] ~ "|") )
 xlabel <- bquote( over( "f", "f"[g]))
 
-rc_fun<- function(f) { 1-(3*f)/(1+f+f^2)}
+rc_fun<- function(f) { (1-(3*f)/(1+f+f^2)) + min}
 
 pdf("BS_clean.pdf", width = output_width, height = output_height, )
 
@@ -43,7 +44,7 @@ p9 <- ggplot(displaydata, aes(dataX, dataY)) +
         xlab(xlabel)  +
         ylab(ylabel)  +
 
-        scale_y_continuous(limits=c(0, 1  ), breaks = c(0, 1, 1/sqrt(2)), labels = c(0, 1, bquote( over(1,sqrt(2))))) +
+        scale_y_continuous(limits=c(0, 1  ), breaks = c(0, 1, min), labels = c(0, 1, "min")) +
 
         scale_x_continuous(trans = "log10", breaks = breaks, minor_breaks = minor_breaks, limits=c(0.01, 100))+
 
@@ -53,10 +54,10 @@ p9 <- ggplot(displaydata, aes(dataX, dataY)) +
 
         #horizontal
         #geom_segment( aes(x = 0.01, y = 1, xend = 1, yend = 1/3 ), color="grey69", linetype="dashed") +
-        geom_segment( aes(x = 0.01, y = 1/sqrt(2), xend = 0.34512, yend = 1/sqrt(2) ), color="grey69", linetype="dashed") +
-        geom_segment( aes(x = 0.01, y = 1/sqrt(2), xend = 2.8975,  yend = 1/sqrt(2) ), color="grey69", linetype="dashed") +
+        geom_segment( aes(x = 0.01, y = min, xend = 100, yend = min), color="grey69", linetype="dashed")
+        #geom_segment( aes(x = 0.01, y = 1/sqrt(2), xend = 2.8975,  yend = 1/sqrt(2) ), color="grey69", linetype="dashed") +
         #vertical
-        geom_segment( aes(x = 0.10949, y = 0, xend = 0.10949, yend = 1/sqrt(2) ), color="grey69", linetype="dashed") +
-        geom_segment( aes(x = 9.1331,  y = 0, xend = 9.1331,  yend = 1/sqrt(2) ), color="grey69", linetype="dashed")
+        #geom_segment( aes(x = 0.10949, y = 0, xend = 0.10949, yend = 1/sqrt(2) ), color="grey69", linetype="dashed") +
+        #geom_segment( aes(x = 9.1331,  y = 0, xend = 9.1331,  yend = 1/sqrt(2) ), color="grey69", linetype="dashed")
 
 p9
