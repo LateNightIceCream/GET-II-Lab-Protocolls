@@ -65,12 +65,14 @@
 
 \section{Vorbereitungsaufgaben}
 
+  %1.1
   \subsection{}
     \begin{center}
       \includegraphics[scale=0.5]{./R/2_1/RLC_Zeiger_Impedanz.pdf}\\
       \includegraphics[scale=0.5]{./R/2_1/RLC_Zeiger_Admittanz.pdf}
     \end{center}
 
+  %1.2
   \subsection{}
 
     \begin{center}
@@ -86,10 +88,79 @@
     \begin{gather*}
       \underline{I} = \frac{\underline{U}}{\underline{Z}},\,\ \underline{U} = \hat{U} \cdot e^{j(\omega t + \phi_u)}\\
       \underline{Z} = R + j \omega L + \frac{1}{j \omega C}\\
-      \underline{I} = \hat{U} \cdot \frac{e^{j(\omega t + \phi_u)}}{R+j \omega L + \frac{1}{j \omega C}}
+      \underline{I} = \frac{\hat{U} \cdot e^{j(\omega t + \phi_u)}}{R+j (\omega L - \frac{1}{ \omega C})}
+      \intertext{Betrag:}
+      \mid \underline{I} \mid = \hat{I} = \frac{\hat{U}}{\sqrt{R^2 + (\omega L - \frac{1}{\omega C} )^2}}
+      \intertext{Phase:}
+      \phi_i = \phi_u - \arctan{\left(\frac{\omega L - \frac{1}{\omega C} }{R} \right)}
+      \intertext{Gesamt:}
+      i(t) = \frac{\hat{U}}{\sqrt{R^2 + (\omega L - \frac{1}{\omega C} )^2}} \cdot \cos{\left( \omega t +  \phi_u - \arctan{\left(\frac{\omega L - \frac{1}{\omega C} }{R} \right)}\right)}
     \end{gather*}
 
+  %1.3
+  \subsection{}
+    \begin{center}
+      \begin{circuitikz}
 
+        \draw (0,0) to[R, l=$R_{sL}$,v=$U_{R_{\text{eff}}}$, o-] (2,0)
+        to[L, l=$L$, -o, v=$U_{L_{\text{eff}}}$, i=$i_{\text{eff}}$] (4,0);
+
+      \end{circuitikz}
+      \vspace{0.021276873\paperheight}
+    $$I = 1.5 \,\ \si{\milli\ampere}, \,\ R_{sL}=200 \si{\ohm},\,\ L = 60 \,\ \si{\milli\henry}$$ \end{center}
+
+    \begin{gather*}
+      \underline{U}_{\text{ges}}=\underline{I}\cdot(R+j \omega L)\\
+      \hat{U}_{\text{ges}} = \hat{I} \cdot \sqrt{R^2 + \omega^2 L^2}\\
+      \hat{U}_{\text{ges}_{\text{eff}}}
+      = I_{\text{eff}}\cdot \sqrt{R^2 + \omega^2 L^2}
+      = 1.5 \si{\milli\ampere} \cdot \sqrt{(200 \si{\ohm})^2 + 4 \pi^2 f^2 \cdot (60 \si{\milli\henry})^2 }
+    \end{gather*}
+
+    \begin{gather*}
+      U_{R_{\text{eff}}} = I_{\text{eff}} \cdot R = 1.5 \si{\milli\ampere} \cdot 200 \si{\ohm} = 0.3 \,\ \si{\volt}
+    \end{gather*}
+
+    \begin{gather*}
+      U_{L_{\text{eff}}} = I_{\text{eff}} \cdot \omega L = 1.5 \si{\milli\ampere} \cdot 2 \pi f \cdot 60 \si{\milli\henry}
+    \end{gather*}
+
+    \begin{center}
+      \includegraphics[scale=0.5]{./R/2_3/2_3.pdf}
+    \end{center}
+
+  %1.4
+  \subsection{}
+    \begin{center}
+      \begin{circuitikz}
+
+        \draw (0,0) to[R, l=$R$,v=$U_{R_{\text{eff}}}$, o-] (2,0)
+        to[C, l=$C$, -o, v=$U_{C_{\text{eff}}}$, i=$i_{\text{eff}}$] (4,0);
+
+      \end{circuitikz}
+      \vspace{0.021276873\paperheight}
+      $$I = 1.5 \,\ \si{\milli\ampere}, \,\ R=200 \si{\ohm},\,\ C_1 = 0.5 \,\ \si{\micro\farad}, \,\ C_2 = 1 \,\ \si{\micro\farad}$$\end{center}
+
+    \begin{gather*}
+      \underline{U}_{\text{ges}}=\underline{I}\cdot(R-j\frac{1}{\omega C})\\
+      \hat{U}_{\text{ges}} = \hat{I} \cdot \sqrt{R^2 + \frac{1}{\omega^2 C^2} }\\
+      \hat{U}_{\text{ges}_{\text{eff}}}=I_{\text{eff}}\cdot\sqrt{R^2 + \frac{1}{\omega^2 C^2} } = 1.5 \si{\milli\ampere} \cdot \sqrt{(200 \si{\ohm})^2 + \frac{1}{4 \pi^2 f^2 C^2} }
+    \end{gather*}
+
+    \begin{gather*}
+      U_{R_{\text{eff}}} = I_{\text{eff}} \cdot R = 1.5 \si{\milli\ampere} \cdot 200 \si{\ohm} = 0.3 \,\ \si{\volt}
+    \end{gather*}
+
+    \begin{gather*}
+        U_{C_{\text{eff}}} = I_{\text{eff}} \cdot \frac{1}{\omega C}\\
+        U_{C_{{\text{eff}}_1}} = I_{\text{eff}} \cdot \frac{1}{\omega C_1} = 1.5 \si{\milli\ampere} \cdot \frac{1}{2 \pi f \cdot 0.5 \si{\micro\farad}}\\
+        U_{C_{{\text{eff}}_2}} = I_{\text{eff}} \cdot \frac{1}{\omega C_2} = 1.5 \si{\milli\ampere} \cdot \frac{1}{2 \pi f \cdot 1 \si{\micro\farad}}
+    \end{gather*}
+
+    \begin{center}
+      \includegraphics[scale=0.5]{./R/2_4/2_4_1.pdf}\\
+      \includegraphics[scale=0.5]{./R/2_4/2_4_2.pdf}
+    \end{center}
 
 \section{Versuchsaufgaben}
 
