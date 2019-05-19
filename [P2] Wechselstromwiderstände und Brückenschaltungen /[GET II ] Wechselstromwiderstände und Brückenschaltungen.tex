@@ -110,10 +110,10 @@
     $$I = 1.5 \,\ \si{\milli\ampere}, \,\ R_{sL}=200 \si{\ohm},\,\ L = 60 \,\ \si{\milli\henry}$$ \end{center}
 
     \begin{gather*}
-      \underline{U}_{\text{ges}}=\underline{I}\cdot(R+j \omega L)\\
-      \hat{U}_{\text{ges}} = \hat{I} \cdot \sqrt{R^2 + \omega^2 L^2}\\
+      \underline{U}_{\text{ges}}=\underline{I}\cdot(R_{sL}+j \omega L)\\
+      \hat{U}_{\text{ges}} = \hat{I} \cdot \sqrt{R_{sL}^2 + \omega^2 L^2}\\
       \hat{U}_{\text{ges}_{\text{eff}}}
-      = I_{\text{eff}}\cdot \sqrt{R^2 + \omega^2 L^2}
+      = I_{\text{eff}}\cdot \sqrt{R_{sL}^2 + \omega^2 L^2}
       = 1.5 \si{\milli\ampere} \cdot \sqrt{(200 \si{\ohm})^2 + 4 \pi^2 f^2 \cdot (60 \si{\milli\henry})^2 }
     \end{gather*}
 
@@ -161,6 +161,92 @@
       \includegraphics[scale=0.5]{./R/2_4/2_4_1.pdf}\\
       \includegraphics[scale=0.5]{./R/2_4/2_4_2.pdf}
     \end{center}
+
+  %1.5
+  \subsection{}
+    \subsubsection*{a) Spule}
+
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{center}
+          \begin{circuitikz}
+
+            \draw (0,0) to[R, l=$R_{sL}$, o-] (2,0)
+            to[L, l=$L_s$, -o] (4,0);
+
+          \end{circuitikz}
+        \end{center}
+        \vspace{0.021276873\paperheight}
+
+        \begin{center}
+          \includegraphics[scale=0.5]{./R/2_5/RL_Zeiger.pdf}
+        \end{center}
+
+        Der Winkel $\delta$, den die Impedanz $\underline{Z}$ mit der imaginären Achse bildet, wird Verlustwinkel genannt. Der Verlustfaktor $d$ ergibt sich dann aus:
+        $$d = \tan{\delta} = \frac{R_{sL}}{L_s} $$
+
+        \noindent Die Güte $Q$ ist definiert als der Kehrwert des Verlustfaktors, also:
+        $$Q_{Ls} = \frac{1}{d} = \frac{\omega L_s}{R_{sL}} $$
+
+
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \vspace{0.021276873\paperheight}
+        \begin{center}
+          \begin{circuitikz}
+
+            \draw (0,0) -- (1,0);
+            \draw (1,-1) -- (1,1);
+            \draw (1,1) to[R, l=$R_{pL}$] (4,1);
+            \draw (1,-1) to[L, l=$L_p$] (4,-1);
+            \draw (4,-1) -- (4,1);
+            \draw (4,0) -- (5,0);
+
+
+          \end{circuitikz}
+        \end{center}
+        \vspace{0.021276873\paperheight}
+
+        \begin{center}
+          \includegraphics[scale=0.5]{./R/2_5/RL_Zeiger_parallel.pdf}
+        \end{center}
+
+        Analog ist der Verlustwinkel $\delta$ der Winkel der Admittanz mit der imaginären Achse:
+        $$ d = \tan{\delta} = \frac{ \frac{1}{R_{pL}} }{ \mid - \frac{1}{\omega L_p} \mid} = \frac{\omega L_p}{R_{pL}} $$
+
+        \noindent Demnach ist auch die Güte der Kehrwert des Verlustfaktors:
+        $$Q_{Lp} = \frac{1}{d} = \frac{R_{pL}}{\omega L_p} $$
+
+        \noindent Für die gleich Frequenz gilt damit:
+        $$Q_{L_s} = Q_{L_p} = Q_L$$
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \subsubsection*{b) Kondensator}
+
+      \begin{center}
+        \begin{circuitikz}
+
+          \draw (0,0) to[R, l=$R_{sC}$, o-] (2,0)
+          to[C, l=$C_s$, -o] (4,0);
+
+        \end{circuitikz}
+      \end{center}
+      \vspace{0.021276873\paperheight}
+
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \vspace{0.021276873\paperheight}
+      \begin{center}
+        \begin{circuitikz}
+
+          \draw (0,0) -- (1,0);
+          \draw (1,-1) -- (1,1);
+          \draw (1,1) to[R, l=$R_{pC}$] (4,1);
+          \draw (1,-1) to[C, l=$C_p$] (4,-1);
+          \draw (4,-1) -- (4,1);
+          \draw (4,0) -- (5,0);
+
+        \end{circuitikz}
+      \end{center}
+      \vspace{0.021276873\paperheight}
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Versuchsaufgaben}
 
