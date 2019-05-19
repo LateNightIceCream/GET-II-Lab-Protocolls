@@ -32,6 +32,8 @@
 
 
 \newcommand*\dif{\mathop{}\!\mathrm{d}}
+%\newcommand{\euler}{\mathrm{e}}
+%\newcommand{\ramuno}{\mathrm{j}}
 
 %%========================================
 %% circuitikz properties
@@ -57,17 +59,35 @@
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \includepdf{Deckblatt.pdf}
+  %\includepdf{Deckblatt.pdf}
   \includepdf{./titlepage/titlepage.pdf}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Vorbereitungsaufgaben}
 
-  \begin{center}
-    \includegraphics[scale=0.5]{./R/2_1/RLC_Zeiger_Impedanz.pdf}\\
-    \includegraphics[scale=0.5]{./R/2_1/RLC_Zeiger_Admittanz.pdf}
-  \end{center}
-  %\vspace{0.013155617496424828\columnwidth}
+  \subsection{}
+    \begin{center}
+      \includegraphics[scale=0.5]{./R/2_1/RLC_Zeiger_Impedanz.pdf}\\
+      \includegraphics[scale=0.5]{./R/2_1/RLC_Zeiger_Admittanz.pdf}
+    \end{center}
+
+  \subsection{}
+
+    \begin{center}
+      \begin{circuitikz}
+
+        \draw (0,0) to[R, l=$R$, o-] (2,0);
+        \draw (2,0) to[L, l=$L$, i=$\underline{I}$] (6,0);
+        \draw (6,0) to[C, l=$C$, -o] (8,0);
+
+      \end{circuitikz}
+    \end{center}
+
+    \begin{gather*}
+      \underline{I} = \frac{\underline{U}}{\underline{Z}},\,\ \underline{U} = \hat{U} \cdot e^{j(\omega t + \phi_u)}\\
+      \underline{Z} = R + j \omega L + \frac{1}{j \omega C}\\
+      \underline{I} = \hat{U} \cdot \frac{e^{j(\omega t + \phi_u)}}{R+j \omega L + \frac{1}{j \omega C}}
+    \end{gather*}
 
 
 
