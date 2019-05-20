@@ -33,8 +33,8 @@ p9 <- ggplot(data.frame(x=c(0, 2),y=c(0,2)), aes(x,y)) +
         xlab(xlabel)  +
         ylab(ylabel)  +
 
-        scale_y_continuous(limits=c(-1.382, 0),  breaks = c(0,-1), labels=c( 0, bquote("-"~over(1,omega ~ "L"["p"])) ) ) +
-        scale_x_continuous(limits=c(0, 1.382),  breaks = c(0,Rpos), labels=c(0, bquote(over(1,"R"["pL"]))), position="top")+
+        scale_y_continuous(limits=c(-1.382, 0),  breaks = c(0,-1), labels=c( 0, bquote("-"~over(1,omega ~ "C"["s"])) ) ) +
+        scale_x_continuous(limits=c(0, 1.382),  breaks = c(0,Rpos), labels=c(0, bquote("R"["sC"])), position="top")+
 
         #lines "#E58700"
         # L

@@ -218,7 +218,7 @@
         \noindent Für die gleich Frequenz gilt damit:
         $$Q_{L_s} = Q_{L_p} = Q_L$$
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+    \pagebreak{}
     \subsubsection*{b) Kondensator}
 
       \begin{center}
@@ -230,6 +230,16 @@
         \end{circuitikz}
       \end{center}
       \vspace{0.021276873\paperheight}
+
+      \begin{center}
+        \includegraphics[scale=0.5]{./R/2_5/RC_Zeiger.pdf}
+      \end{center}
+
+      Der Winkel $\delta$, den die Impedanz $\underline{Z}$ mit der imaginären Achse bildet, wird Verlustwinkel genannt. Der Verlustfaktor $d$ ergibt sich dann aus:
+      $$d = \tan{\delta} = \frac{R_{sC}}{\mid -\frac{1}{\omega C_s }\mid} = R_{sC} \cdot \omega C_s$$
+
+      \noindent Die Güte $Q$ ist definiert als der Kehrwert des Verlustfaktors, also:
+      $$Q_{Cs} = \frac{1}{d} = \frac{1}{\omega R_{sC} C_s} $$
 
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
       \vspace{0.021276873\paperheight}
@@ -246,7 +256,99 @@
         \end{circuitikz}
       \end{center}
       \vspace{0.021276873\paperheight}
+
+      \begin{center}
+        \includegraphics[scale=0.5]{./R/2_5/RC_Zeiger_parallel.pdf}
+      \end{center}
+
+      Analog ist der Verlustwinkel  $\delta$ im Parallelmodell der Winkel der Admittanz mit der imaginären Achse:
+      $$ d = \tan{\delta} = \frac{ \frac{1}{R_{pC}} }{\omega C_p} = \frac{1}{\omega R_{pC} C_p} $$
+
+      \noindent Demnach ist auch die Güte der Kehrwert des Verlustfaktors:
+      $$Q_{Cp} = \frac{1}{d} = \omega R_{pC} C_p $$
+
+      \noindent Für die gleich Frequenz gilt damit:
+      $$Q_{C_s} = Q_{C_p} = Q_C$$
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  %1.6
+  \subsection{}
+    \begin{center}
+      \begin{circuitikz}
+
+        \draw (0,0) to[R, l=$R_{1}$, o-]  (2,0)
+                    to[L, l=$L$, -o]      (4,0)
+                    to[R, l=$R_2$, *-*]   (4,-2);
+        \draw (6,0) to[C, l=$C$, *-*]     (6,-2);
+        \draw (0,-2)to[short, o-o]        (8,-2);
+        \draw (4,0) to[short, -o]         (8,0);
+
+      \end{circuitikz}
+
+    $$R_1 = 25 \,\ \si{\kilo\ohm}, \,\ R_2=100 \,\ \si{\kilo\ohm}, \,\ C = 1 \,\ \si{\nano\farad}, \,\ L = 0.25 \,\ \si{\henry}, \,\ f = 800 \,\ \si{\hertz}$$
+    \end{center}
+
+    \vspace{0.021276873\paperheight}
+
+    \subsubsection*{a)}
+      \begin{gather*}
+        \underline{Z} = R_1 + j \omega L + \frac{1}{\frac{1}{R_2} + j \omega C} = R_1 + j  \omega L + \frac{\frac{1}{R_2} - j \omega C}{\frac{1}{R_2^2} + \omega^2 C^2}\\
+        \underline{Z} = \underbrace{R_1 + \frac{\frac{1}{R_2}}{\frac{1}{R_2^2} + \omega^2 C^2}}_{\text{Realteil (Resistanz)}} + j \underbrace{\left( \omega L - \frac{\omega C}{\frac{1}{R_2^2} + \omega^2 C^2} \right)}_{\text{Imaginärteil (Reaktanz)}}\\
+      \end{gather*}
+
+      \begin{gather*}
+        \text{Re}(\underline{Z}) = 25 \si{\kilo\ohm} + \frac{1}{100 \si{\kilo\ohm} \left(\frac{1}{(100 \si{\kilo\ohm})^2} + (2 \pi \cdot  800 \si{\hertz} \cdot 1 \si{\nano\farad})^2 \right)} = 104.83 \,\ \si{\kilo\ohm}\\
+        \text{Im}(\underline{Z}) = 2 \pi \cdot 800 \si{\hertz} \cdot \left ( 0.25 \si{\henry} - \frac{1 \si{\nano\farad}}{\frac{1}{(100 \si{\kilo\ohm})^2} + (2 \pi \cdot  800 \si{\hertz} \cdot 1 \si{\nano\farad})^2 } \right) = \underbrace{-38.87 \,\ \si{\kilo\ohm}}_{\text{kapazitiv}}
+      \end{gather*}
+
+      \begin{gather*}
+        \underline{Z} = 104.83 \,\ \si{\kilo\ohm} - j 38.87 \si{\kilo\ohm}
+      \end{gather*}
+
+      \subsubsection*{b)}
+      %Betrag
+      \begin{gather*}
+        \mid \underline{Z} \mid
+        = \sqrt{ \left(R_1 + \frac{ 1 }{ \frac{1}{R_2} +  \omega^2 C^2 R_2}\right)^2 + \left( \omega L - \frac{\omega C}{\frac{1}{R_2^2} + \omega^2 C^2} \right)^2 }\\\\
+        \mid \underline{Z} \mid = 111.8 \,\ \si{\kilo\ohm}
+      \end{gather*}
+
+      %\begin{gather*} too large!
+        %\mid \underline{Z} \mid
+        %= \sqrt{ \left(25 \si{\kilo\ohm} + \frac{ 1 }{ \frac{1}{100 \si{\kilo\ohm}} +  (2 \pi \cdot 800 \si{\hertz} \cdot 1 \si{\nano\farad})^2 \cdot 100 \si{\kilo\ohm}}\right)^2 + \left( 2 \pi \cdot 800 \si{\hertz} \cdot 0.25 \si{\henry} - \frac{2 \pi \cdot 800 \si{\hertz} \cdot C}{\frac{1}{(100 \si{\kilo\ohm})^2} + (2 \pi \cdot 800 \si{\hertz} \cdot 1 \si{\nano\farad})^2} \right)^2 }\\
+      %\end{gather*}
+
+      %Phase
+      \begin{gather*}
+        \phi_{\underline{Z}} = \arctan{\left(   \frac{\omega L - \dfrac{\omega C}{\frac{1}{R_2^2} + \omega^2 C^2}}{R_1 + \dfrac{1}{\frac{1}{R_2} + \omega^2 C^2 R_2} }   \right)} = \arctan{\left(  \frac{-38.87 \si{\kilo\ohm}}{104.83 \si{\kilo\ohm}}  \right)}\\\\
+        \phi_{\underline{Z}} = 20.36 \,\ \si{\degree}
+      \end{gather*}
+
+  \pagebreak{}
+  %1.7
+  \subsection{}
+    \begin{gather*}
+      \intertext{Abgleich bei $U_2 = 0$}
+      \frac{R_2}{R_1} = \frac{Z_x}{Z_N} = \frac{\dfrac{1}{\frac{1}{R_x} + j \omega C_x}}{\dfrac{1}{\frac{1}{R_N} + j \omega C_N}} =  \frac{\frac{1}{R_N} + j \omega C_N}{\frac{1}{R_x} + j \omega C_x}\\
+      \frac{R_2}{R_x} + j \omega R_2 C_x = \frac{R_1}{R_N} + j \omega C_N\\
+      \intertext{Realteilvergleich:}
+        \frac{R_2}{R_x} = \frac{R_1}{R_N} \implies R_x = \frac{R_N \cdot R_2}{R_1}
+      \intertext{Imaginärteilvergleich:}
+        \omega R_2 C_x = \omega R_1 C_N \implies C_x = C_N \cdot \frac{R_1}{R_2}
+    \end{gather*}
+
+    %1.8
+    \subsection{}
+      \begin{gather*}
+        \intertext{Abgleich bei $U_2 = 0$}
+        \frac{R_2}{Z_N} = \frac{Z_x}{R_3}\\
+        \frac{R_2}{\dfrac{1}{\frac{1}{R_N} + j \omega C_N}} = \frac{R_x + j \omega L_x}{R_3}\\
+        \frac{R_2}{R_N} + j \omega R_2 C_N = \frac{R_x}{R_3} + j \frac{\omega L_x}{R_3}\\
+        \intertext{Realteilvergleich:}
+          \frac{R_2}{R_N} = \frac{R_x}{R_3} \implies R_x = \frac{R_2 \cdot R_3}{R_N}
+        \intertext{Imaginärteilvergleich:}
+          \omega R_2 C_N = \frac{\omega L_x}{R_3} \implies L_x = R_2 R_3 C_N
+      \end{gather*}
 
 \section{Versuchsaufgaben}
 
