@@ -524,10 +524,76 @@
 
   %2.4
   \subsection{}
+    \begin{center}
+      \includegraphics[scale=0.5]{./R/Ortskurve/ZeigerbildSpannung.pdf}
+    \end{center}
 
   %2.5
   \subsection{}
     \subsubsection*{a)}
+      Im Versuch wurden die Kapazität $C_4$ und der Widerstand $R_3$ der Kapazitätsmessbrücke so eingestellt, dass die Spannung $U_2$ sehr gering wurde (ca. $4 \,\ \si{\milli\volt}$).\\
+      Es wurden die folgenden Werte ermittelt:
+      \begin{table}[H]
+        \begin{center}
+          \begin{tabular}{@{}llllllll@{}}
+          \toprule
+          $f / \si{\hertz}$    & $R_p / \si{\ohm}$    & $C / \si{\nano\farad}$     & $R_1 / \si{\ohm}$   & $R_2 / \si{\ohm}$   & $R_{3_{\text{eingestellt}}} / \si{\ohm}$ & $C_{4_{\text{eingestellt}}} / \si{\nano\farad}$    \\ \midrule
+          2000 & 25000 & 432nF & 1000 & 1000 & 25000     & 432  \\
+          8000 & 2800  & 430nF & 1000 & 1000 & 2800      & 430  \\ \bottomrule
+          \end{tabular}
+        \end{center}
+      \end{table}
 
+    \subsubsection*{b)}
+      \begin{gather*}
+        \intertext{Güte:}
+        Q_c = \omega C_p R_p
+        \intertext{$f = 2000 \,\ \si{\hertz}$:}
+        Q_c = 2 \pi \cdot 2000 \si{\hertz} \cdot 432 \si{\nano\farad} \cdot 25000 \si{\ohm} \approx 135.72
+        \intertext{$f = 8000 \,\ \si{\hertz}$:}
+        Q_c = 2 \pi \cdot 8000 \si{\hertz} \cdot 430 \si{\nano\farad} \cdot 2800 \si{\ohm} \approx 60.52
+        \intertext{Scheinwiderstand:}
+        \mid \underline{Z} \mid = \frac{1}{\sqrt{\frac{1}{R_p^2}+\omega^2 C_p^2}}
+        \intertext{$f = 2000 \,\ \si{\hertz}$:}
+        \mid \underline{Z} \mid = \frac{1}{\sqrt{\dfrac{1}{(25000 \si{\ohm})^2}+(2 \pi \cdot 2000 \si{\hertz} \cdot 432 \si{\nano\farad})^2}} \approx 184.202 \,\ \si{\ohm}
+        \intertext{$f = 8000 \,\ \si{\hertz}$:}
+        \mid \underline{Z} \mid = \frac{1}{\sqrt{\dfrac{1}{(2800 \si{\ohm})^2}+(2 \pi \cdot 8000 \si{\hertz} \cdot 430 \si{\nano\farad})^2}} \approx 46.26 \,\ \si{\ohm}
+      \end{gather*}
+
+  %2.6
+  \subsection{}
+    \subsubsection*{a)}
+      Mithilfe des RLC-Messgerätes wurden folgende Werte ermittelt:\\
+      \begin{table}[H]
+        \begin{center}
+          \begin{tabular}{@{}lllll@{}}
+          \toprule
+          $f / \si{\hertz}$     & $C / \si{\nano\farad}$        & $D$       & $R_p / \si{\kilo\ohm}$      & $R_s /\si{\ohm}$     \\ \midrule
+          100   & 437.72 & 0.00659 & 550    & 23.9   \\
+          1000  & 434.03 & 0.00805 & 45.536 & 2.95   \\
+          10000 & 429.75 & 0.01188 & 3.12   & 439.66 \\ \bottomrule
+          \end{tabular}
+        \end{center}
+      \end{table}
+
+    \subsubsection*{b)}
+      \begin{gather*}
+        \intertext{Güte:}
+        Q_c = \omega C R_p
+        \intertext{$f = 100 \,\ \si{\hertz}$:}
+        Q_c = 2 \pi \cdot 100 \si{\hertz} \cdot 437.72 \si{\nano\farad} \cdot 550 \si{\kilo\ohm} \approx 151.27
+        \intertext{$f = 1000 \,\ \si{\hertz}$:}
+        Q_c = 2 \pi \cdot 1000 \si{\hertz} \cdot 434.03 \si{\nano\farad} \cdot 45.536 \si{\kilo\ohm} \approx 124.18
+        \intertext{$f = 10000 \,\ \si{\hertz}$:}
+        Q_c = 2 \pi \cdot 10000 \si{\hertz} \cdot 429.75 \si{\nano\farad} \cdot 3.12 \si{\kilo\ohm} \approx 84.25
+        \intertext{Scheinwiderstand:}
+        \mid \underline{Z} \mid = \frac{1}{\sqrt{\frac{1}{R_p^2}+\omega^2 C_p^2}}
+        \intertext{$f = 100 \,\ \si{\hertz}$:}
+        \mid \underline{Z} \mid = \frac{1}{\sqrt{\dfrac{1}{(550 \si{\kilo\ohm})^2}+(2 \pi \cdot 100 \si{\hertz} \cdot 437.72 \si{\nano\farad})^2}} \approx 3635.92 \,\ \si{\ohm}
+        \intertext{$f = 1000 \,\ \si{\hertz}$:}
+        \mid \underline{Z} \mid = \frac{1}{\sqrt{\dfrac{1}{(45.536 \si{\kilo\ohm})^2}+(2 \pi \cdot 1000 \si{\hertz} \cdot 434.03 \si{\nano\farad})^2}} \approx 366.68 \,\ \si{\ohm}
+        \intertext{$f = 10000 \,\ \si{\hertz}$:}
+        \mid \underline{Z} \mid = \frac{1}{\sqrt{\dfrac{1}{(3.12 \si{\kilo\ohm})^2}+(2 \pi \cdot 10000 \si{\hertz} \cdot 429.75 \si{\nano\farad})^2}} \approx 37.03 \,\ \si{\ohm}
+      \end{gather*}
 
 \end{document}
