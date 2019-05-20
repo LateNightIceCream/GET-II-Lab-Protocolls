@@ -28,6 +28,7 @@ Tcolor <- "#00BCD8"
 
 UgesColor<- "#B983FF"
 ULColor  <- "#00C0AF"
+OKcolor  <- "#00B0F6"
 
 pdf("ZeigerbildSpannung.pdf", width = output_width, height = output_height)
 
@@ -37,7 +38,7 @@ p9 <- ggplot(data.frame(x=c(0, 2),y=c(0,2)), aes(x,y)) +
 
         theme_minimal() + # maybe theme_bw()
 
-        ggtitle("Zeigerfiagramm für f = 300Hz") +
+        ggtitle("Zeigerdiagramm für f = 300Hz (gestrichelt: Ortskurve)") +
 
         theme(axis.title.y = element_text(angle = 0, vjust = 0.5, size=16.18) ) + # rotate axis title
         theme(axis.title.x = element_text(angle = 0, hjust = 0.5, size=16.18) ) +
@@ -67,8 +68,12 @@ p9 <- ggplot(data.frame(x=c(0, 2),y=c(0,2)), aes(x,y)) +
 
         #uges
         geom_segment( aes(x = 0, y = 0, xend = Ur_eff+Urs_eff+cos(phi)*Ull_eff, yend = sin(phi)*Ull_eff ), color=UgesColor,   linetype="solid", arrow = arrow(length = unit(0.5, "cm")), size = 1.3819)+
-        annotate(geom="text", x=Ur_eff+Urs_eff-0.34, y=1.05, label="Uges_eff", color=UgesColor, size=6.18)
+        annotate(geom="text", x=Ur_eff+Urs_eff-0.34, y=1.05, label="Uges_eff", color=UgesColor, size=6.18) +
 
+        #OK
+        geom_segment( aes(x = Ur_eff+Urs_eff+cos(phi)*Ull_eff, y = 0, xend = Ur_eff+Urs_eff+cos(phi)*Ull_eff, yend = 1.5), color=OKcolor,   linetype="dashed", size = 1.3819)+
 
+        geom_segment( aes(x = Ur_eff+Urs_eff+cos(phi)*Ull_eff+0.125, y = 0.333 + 0.25, xend = Ur_eff+Urs_eff+cos(phi)*Ull_eff+0.125, yend = 0.5 + .25), color=OKcolor,   arrow = arrow(length = unit(0.5, "cm")), linetype="solid", size = 1)+
+        annotate(geom="text", x=Ur_eff+Urs_eff+cos(phi)*Ull_eff+0.125 + 0.075, y=0.333 + 0.25 + 0.075, label="f", color=OKcolor, size=6.18)
 
 p9
