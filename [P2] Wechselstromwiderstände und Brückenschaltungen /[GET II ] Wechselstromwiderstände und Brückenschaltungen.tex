@@ -397,7 +397,9 @@
        \phi = \arctan{\frac{U_L^*}{U_R}}\\
        \delta = \frac{\pi}{2} - \phi\\
        X_L = 2 \pi f \cdot L\\
-       \mid \underline{Z}_L \mid = \sqrt{R_s^2 + X_L^2}
+       \mid \underline{Z}_L \mid = \sqrt{R_s^2 + X_L^2}\\
+       Q = \frac{U_L^*}{U_{R_{s}}}\\
+       L = \frac{Q R_s}{2 \pi f}\\
      \end{gather*}
       \begin{table}[H]
       \begin{center}
@@ -466,11 +468,66 @@
       \begin{center}
         \begin{tabular}{@{}lllllll@{}}
         \toprule
-        $f / \si{\hertz}$    & $R /\si{\ohm}$      & $L / \si{\milli\henry}$      & $C_{\text{eingestellt}} / \si{\nano\farad}$       & $R_{\text{eingestellt}}/\si{\ohm}$  & $R2 /\si{\ohm}$   & $R3 /\si{\ohm}$   \\ \midrule
+        $f / \si{\hertz}$    & $R_{\text{Verlust}} /\si{\ohm}$      & $L / \si{\milli\henry}$      & $C_{\text{eingestellt}} / \si{\nano\farad}$       & $R_{\text{eingestellt}}/\si{\ohm}$  & $R_2 /\si{\ohm}$   & $R_3 /\si{\ohm}$   \\ \midrule
         800  & 54.644 & 292.2 & 292.2 & 18300     & 1000 & 1000 \\
         2000 & 63.29  & 296.7 & 296.7 & 15800     & 1000 & 1000 \\ \bottomrule
         \end{tabular}
       \end{center}
       \end{table}
+
+      \subsubsection*{b)}
+        \begin{gather*}
+          \intertext{Scheinwiderstand:}
+          \mid \underline{Z} \mid = \sqrt{ R_{\text{Verlust}}^2 + (2 \pi f \cdot L)^2 }
+          \intertext{Verlustwinkel:}
+          \delta = \arctan{\frac{R_{\text{Verlust}}}{2 \pi f \cdot L}}
+          \intertext{Güte:}
+          Q_{L_s} = \frac{1}{\tan{\delta}}
+          \intertext{$f = 800 \,\ \si{\hertz}:$}
+          \mid \underline{Z} \mid = \sqrt{(54.644 \si{\ohm})^2 + (2 \pi \cdot 800 \si{\hertz} \cdot 292.2 \si{\milli\henry})^2 } \approx 1469.774 \,\ \si{\ohm}\\
+          \delta = \arctan{\frac{54.644 \si{\ohm}}{2 \pi \cdot 800 \si{\hertz} \cdot 292.2 \si{\milli\henry}}} \approx 2.13 \,\ \si{\degree}\\
+          Q_{L_s} = \frac{2 \pi \cdot 800 \si{\hertz} \cdot 292.2 \si{\milli\henry}}{54.644 \si{\ohm}} \approx 26.879\\
+          \intertext{$f = 2000 \,\ \si{\hertz}:$}
+          \mid \underline{Z} \mid = \sqrt{(63.29 \si{\ohm})^2 + (2 \pi \cdot 2000 \si{\hertz} \cdot 296.7 \si{\milli\henry})^2 } \approx 3728.979 \,\ \si{\ohm}\\
+          \delta = \arctan{\frac{63.29 \si{\ohm}}{2 \pi \cdot 2000 \si{\hertz} \cdot 296.7 \si{\milli\henry}}} \approx 0.97 \,\ \si{\degree}\\
+          Q_{L_s} = \frac{2 \pi \cdot 2000 \si{\hertz} \cdot 296.7 \si{\milli\henry}}{63.29 \si{\ohm}} \approx 58.91
+        \end{gather*}
+
+  %2.3
+  \subsection{}
+    \subsubsection*{a)}
+      \noindent Mit dem RLC-Messgerät wurden folgende Werte ermittelt:
+      \begin{table}[H]
+      \begin{center}
+        \begin{tabular}{@{}lllll@{}}
+        \toprule
+        $f / \si{\hertz}$     & $L /\si{\milli\henry}$     & $R_s /\si{\ohm}$    & $R_p /\si{\ohm}$      & $Q$      \\ \midrule
+        100   & 292.1  & 52.738 & 691.34 & 3.4797 \\
+        1000  & 292.89 & 55.83  & 60.67k & 32.94  \\
+        10000 & 394.05 & 486    & 1.3M   & 52.3   \\ \bottomrule
+        \end{tabular}
+      \end{center}
+      \end{table}
+
+      \subsubsection*{b)}
+      \begin{center}
+        \includegraphics[scale=0.5]{./R/3_3/3_3_Induktivitaet.pdf}
+      \end{center}
+      \vspace{0.021276873\paperheight}
+      \begin{center}
+        \includegraphics[scale=0.5]{./R/3_3/3_3_Verlustwinkel.pdf}
+      \end{center}
+      \vspace{0.021276873\paperheight}
+      \begin{center}
+        \includegraphics[scale=0.5]{./R/3_3/3_3_Scheinwiderstand.pdf}
+      \end{center}
+
+  %2.4
+  \subsection{}
+
+  %2.5
+  \subsection{}
+    \subsubsection*{a)}
+
 
 \end{document}
