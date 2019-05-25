@@ -5,46 +5,44 @@ library(RColorBrewer)
 
 options(scipen=10000)
 
-breaks       <- 10^(-10:10)
-minor_breaks <- rep(1:9, 21)*(10^rep(-10:10, each=9))
+mod<-function(x,m)
+{
+    t1<-floor(x/m)
+    return(x-t1*m)
+}
 
-#ybreaks = c(seq(0,1.0,0.1),round(1/sqrt(2),digits = 3));
-#ybreaks = ybreaks[-8] # ybreaks without 0.7 (8th element)
+epsilon <- 10
+tau     <- 4
+T1      <- tau * 1.6180339887498948
 
 output_width  <- 10
 output_height <- output_width * 0.6180339887498948
 
-epsilon <- 10
 
-R  <- 1000;
-RP <- 1000;
-L  <- 0.001;
-C  <- 0.000001;
+ylabel <- bquote( "x" )
+xlabel <- bquote( "t" )
 
 
-fga <- (sqrt( ((RP+R)/(2*RP*R*C))^2 + 1/(L*C)) + (RP+R)/(2*RP*R*C) ) / (2*pi)
-fgb <- (sqrt( ((RP+R)/(2*RP*R*C))^2 + 1/(L*C)) - (RP+R)/(2*RP*R*C) ) / (2*pi)
+xbreaks <- c()
+loops <- 5
 
-print(fga)
-print(fgb)
+for(n in -loops:loops) {
+  xbreaks <- c(xbreaks, n*tau/2, n*T1/2)
+}
 
-ylabel <- bquote( over( "|" ~ underline("U")[2] ~ "|"  , "|" ~ underline("U")[1] ~ "|") )
-xlabel <- bquote( over( "f", "f"[g]))
+function_color <- "red"
+tempcolor      <- "blue"
 
-rc_fun<- function(f) {1 / sqrt( 4 + (R*2*pi*f * C - R/(2*pi*f * L) )^2 ) }
-
-pdf("2_7_betrag_clean.pdf", width = output_width, height = output_height, )
 
 ####################################################################
 
 p <- ggplot(data.frame(x=c(0,2), y=c(0,2)), aes(x=x)) +
 
         theme_minimal() + # maybe theme_bw()
-        scale_colour_brewer(palette = "Set2") +
 
-        ggtitle("Betragsgang") +
+        ggtitle("x(t)") +
 
-        stat_function(fun = rc_fun, colour = "dodgerblue3")+
+        #stat_function(fun = f1, colour = "dodgerblue3")+
 
         theme(axis.title.y = element_text(angle = 0, vjust = .5)) + # rotate axis title
 
@@ -53,13 +51,31 @@ p <- ggplot(data.frame(x=c(0,2), y=c(0,2)), aes(x=x)) +
         xlab(xlabel)  +
         ylab(ylabel)  +
 
-        scale_y_continuous(limits=c(0, 1), breaks=c(0,1), labels=c(0, "Xm")) +
-        scale_x_continuous(limits=c(-epsilon, epsilon) ) +
+        scale_y_continuous(limits=c(0, 1.6180339887498948), breaks=c(0,1, 1.6180339887498948), labels=c(0, "Xm", "")) +
+        scale_x_continuous(limits=c(-epsilon, epsilon) , breaks=xbreaks) #labels=c(0, bquote("-"~over("T1",2)), bquote(over(-tau,2)), bquote(over(-tau,2)), bquote(over(tau,2))) )
 
-        #lines
-        #geom_segment( aes(x = 4500, y = 1/(2*sqrt(2)),  xend = fga, yend = 1/(2*sqrt(2)) ), color="grey69", linetype="dashed") +
-        geom_segment( aes(x = 1/(2*pi*sqrt(L*C)),    y = 0,          xend = 1/(2*pi*sqrt(L*C)), yend = 0.5 ), color="grey69", linetype="dashed") +
-        geom_segment( aes(x = fgb,    y = 0,          xend = fgb, yend = 1/(2*sqrt(2)) ), color="grey69", linetype="dashed") +
-        geom_segment( aes(x = fga,    y = 0,          xend = fga, yend = 1/(2*sqrt(2)) ), color="grey69", linetype="dashed")
+        # solid function lines
 
+
+        # dashed lines
+        #geom_segment( aes(x = -tau/2, y = 0, xend = -tau/2, yend = 1 ), color=function_color, linetype="dashed") +
+        #geom_segment( aes(x = tau/2,  y = 0,  xend = tau/2, yend = 1 ), color=function_color, linetype="dashed")
+        #geom_segment( aes(x = fgb,    y = 0,          xend = fgb, yend = 1/(2*sqrt(2)) ), color="grey69", linetype="dashed") +
+        #geom_segment( aes(x = fga,    y = 0,          xend = fga, yend = 1/(2*sqrt(2)) ), color="grey69", linetype="dashed")
+
+delta <- T1
+
+for (n in -1:1) {
+
+  # solid horizontal lines
+  p <- p + geom_segment( x = -tau/2 + n*delta, y = 1, xend = tau/2  + n*delta,  yend = 1, color=tempcolor, linetype="solid") +
+      geom_segment( x = -T1/2  + n*delta, y = 0, xend = -tau/2 + n*delta,  yend = 0, color=tempcolor, linetype="solid") +
+      geom_segment( x = T1/2   + n*delta, y = 0, xend = tau/2  + n*delta,  yend = 0, color=tempcolor, linetype="solid")
+
+  # dashed vertical lines
+  p <- p + geom_segment( x = -tau/2 + n*delta, y = 0, xend = -tau/2 + n*delta, yend = 1, color=function_color, linetype="dashed")+
+           geom_segment( x =  tau/2 + n*delta, y = 0, xend = tau/2 + n*delta,  yend = 1, color=function_color, linetype="dashed")
+}
+
+pdf("2_1_function.pdf", width = output_width, height = output_height, )
 p
