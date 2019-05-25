@@ -42,26 +42,13 @@ p <- ggplot(data.frame(x=c(0,2), y=c(0,2)), aes(x=x)) +
 
         ggtitle("x(t)") +
 
-        #stat_function(fun = f1, colour = "dodgerblue3")+
-
         theme(axis.title.y = element_text(angle = 0, vjust = .5)) + # rotate axis title
-
-        #labs(title="", subtitle="", y="", x="", caption="Midwest Demographics")+
 
         xlab(xlabel)  +
         ylab(ylabel)  +
 
         scale_y_continuous(limits=c(0, 1.6180339887498948), breaks=c(0,1, 1.6180339887498948), labels=c(0, "Xm", "")) +
         scale_x_continuous(limits=c(-epsilon, epsilon) , breaks=xbreaks) #labels=c(0, bquote("-"~over("T1",2)), bquote(over(-tau,2)), bquote(over(-tau,2)), bquote(over(tau,2))) )
-
-        # solid function lines
-
-
-        # dashed lines
-        #geom_segment( aes(x = -tau/2, y = 0, xend = -tau/2, yend = 1 ), color=function_color, linetype="dashed") +
-        #geom_segment( aes(x = tau/2,  y = 0,  xend = tau/2, yend = 1 ), color=function_color, linetype="dashed")
-        #geom_segment( aes(x = fgb,    y = 0,          xend = fgb, yend = 1/(2*sqrt(2)) ), color="grey69", linetype="dashed") +
-        #geom_segment( aes(x = fga,    y = 0,          xend = fga, yend = 1/(2*sqrt(2)) ), color="grey69", linetype="dashed")
 
 delta <- T1
 
