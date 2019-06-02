@@ -130,7 +130,7 @@ p <- ggplot(data.frame(x=c(0,2), y=c(0,2)), aes(x=x)) +
         theme(text = element_text(size=16.180339887498948), axis.title.y = element_text(angle = 0, vjust = .5), panel.grid.minor.x = element_blank()) + # rotate axis title
 
         xlab(xlabel) +
-        #ylab(ylabel)  +
+        ylab("")  +
 
         scale_y_continuous(limits=c(-0.145898034, 1.6180339887498948), breaks=c(0,Xm, 1.6180339887498948), labels=c(0, "Xm", "")) +
         scale_x_continuous(limits=c(-epsilon, epsilon), breaks=xbreaks, labels=xlabels)
