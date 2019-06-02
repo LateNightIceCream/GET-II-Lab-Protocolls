@@ -18,7 +18,7 @@ xlabel <- bquote( "t" )
 
 
 xbreaks <- c(0, -tau/2, tau/2, -T1/2, T1/2, -T1, T1)
-xlabels <- c(0, bquote("-"~over(tau, 2)), bquote(over(tau, 2)), bquote("-"~over("T", 2)), bquote(over("T", 2)), "-T", "T")
+xlabels <- c(0, bquote("-"~over(tau, 2)), bquote(over(tau, 2)), bquote("-"~over("T"[1], 2)), bquote(over("T"[1], 2)), bquote("-T"[1]), bquote("T"[1]))
 
 #for(n in 1:3) {
   #xbreaks <- c(xbreaks, n*T1)
@@ -33,7 +33,7 @@ function_color <- "#0CB5DF"
 p <- ggplot(data.frame(x=c(0,2), y=c(0,2)), aes(x=x)) +
 
         theme_minimal() + # maybe theme_bw()
-        theme(legend.position="none") +
+        theme(legend.position="none", plot.title = element_text(color = "gray21", size=1.6180339887498948^5), plot.subtitle = element_text(color = "grey80", size=1.6180339887498948^5)) +
         ggtitle("x(t)") +
 
         theme(text = element_text(size=16.180339887498948), axis.title.y = element_text(angle = 0, vjust = .5), panel.grid.minor.x = element_blank()) + # rotate axis title
