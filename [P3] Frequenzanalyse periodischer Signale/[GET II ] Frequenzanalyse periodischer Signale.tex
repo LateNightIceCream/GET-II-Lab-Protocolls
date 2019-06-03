@@ -103,18 +103,23 @@
 
     \begin{gather*}
       \text{\small Aus der komplexen Reihendarstellung folgt}\notag\\
-      \hat{X}_\nu = \sqrt{a^2_\nu + b^2_\nu}\\
-      \phi_\nu = \arccos{\frac{a_\nu}{\hat{X}_\nu}}\\
-      a_\nu = 2 \cdot \text{Re}(\underline{X}_\nu) = 2 D X_m \cdot \text{si}(\pi \nu D)\\
       b_\nu = -2 \cdot \text{Im}(\underline{X}_\nu) = 0\\
-      \text{\small also}\notag\\
-      a_\nu = \hat{X}_\nu, \,\
-      \phi_\nu = 0
+      \hat{X}_\nu = \sqrt{a^2_\nu + b^2_\nu} = 2 \cdot \mid \underline{X}_\nu\mid \implies a_\nu = 2 \cdot \mid D \cdot X_m \cdot \text{si}(\nu \pi D)\mid \\
+      \text{\small $\phi_\nu$ hängt nur vom Wert von $\text{si}{(\nu \pi D)}$ ab, da $\underline{X}_\nu$ rein reell ist:}\notag\\
+      \phi_\nu =
+      \begin{dcases}
+      0 & ; \nu = \frac{4k+1}{2D} \\
+      \pi & ; \nu =\frac{4k-1}{2D} \\
+      \text{n.d.} & ; \text{sonst}
+      \end{dcases}
+      %\text{\small also}\notag\\
+      %a_\nu = \hat{X}_\nu, \,\
+      %\phi_\nu = 0
     \end{gather*}
 
     \begin{gather*}
       \text{\small Somit ist}\notag\\
-      x(t) = \frac{X_m}{2} + \sum^{\infty}_{\nu=1}{2 D X_m \cdot \text{si}(\pi \nu D) \cdot \cos(\nu \cdot \frac{2\pi}{T_1} \cdot t)}
+      x(t) = \frac{X_m}{2} + \sum^{\infty}_{\nu=1}{2 D X_m \cdot \mid \text{si}(\pi \nu D) \mid \cdot \cos(\nu \cdot \frac{2\pi}{T_1} \cdot t + \phi_\nu)}
     \end{gather*}
 
     \vspace{0.021276873\paperheight}
@@ -130,47 +135,124 @@
     \end{gather*}
 
     %\vspace{0.021276873\paperheight}
-    \begin{table}[H]
-      \begin{center}
+
+    \begin{center}
+      \bgroup
+      \def\arraystretch{1.6180339887498948}
         \begin{tabular}{@{}cccc@{}}
         \toprule
-        \multicolumn{3}{c}{$D = \frac{1}{2}$} \\ \midrule
-        $\nu$      & $\hat{X}_\nu$   & $\phi_\nu$ & $X_{\text{eff}}$   \\ \hline
-        0          &  $$         &       &       \\
-        1          &  $$         &        &      \\
-        2          &  $$     &            &      \\
-        3          &  $$        &         &     \\
-        4          &  $$         &        &      \\
-        5          &  $$        &         &     \\
-        6          &  $$        &          &    \\
-        7          &  $$         &         &     \\
-        8          &  $$         &         &     \\
-        9          &  $$         &         &     \\
-        10         &  $$         &         &     \\
-        13         &  $$         &         &     \\
-        14         &  $$         &         &     \\
-        15         &  $$         &         &     \\
-        16         &  $$         &         &     \\ \bottomrule
+        \multicolumn{3}{c}{$D = \frac{1}{2}, X_{\text{eff}}=\frac{X_m}{\sqrt{2}}$} \\ \midrule
+        $\nu$      & $\underline{X}_\nu$   & $\hat{X}_\nu$ & $\phi_\nu$ \\ \hline
+        1          &  $\frac{1}{\pi} X_m$      &      $\frac{2}{\pi} X_m$&        $0$\\
+        2          &  $-$         &       $-$      & $-$  \\
+        3          &  $\shortminus\frac{1}{3\pi} X_m$         &   $\frac{2}{3\pi} X_m$   &        $\pi$\\
+        4          &  $-$         &       $-$    &$-$    \\
+        5          &  $\frac{1}{5\pi} X_m$      &       $\frac{2}{5\pi} X_m$    &  $0$ \\
+        6          &  $-$         &       $-$    & $-$   \\
+        7          &  $\shortminus\frac{1}{7\pi} X_m$         &          $\frac{2}{7\pi}X_m$  & $\pi$\\
+        8          &  $-$         &       $-$     & $-$   \\
+        9          &  $\frac{1}{9\pi} X_m$         &       $\frac{2}{9\pi} X_m$   &  $0$   \\
+        10         &  $-$         &       $-$       & $-$ \\
+        11         &  $\shortminus\frac{1}{11\pi} X_m$         &       $\frac{2}{11\pi} X_m$  &   $\pi$ \\
+        12         &  $-$         &       $-$      & $-$  \\
+        13         &  $\frac{1}{13\pi} X_m$         &      $\frac{2}{13\pi} X_m$ &   $0$   \\
+        14         &  $-$         &      $-$       & $-$  \\
+        15         &  $\shortminus\frac{1}{15\pi} X_m$         &      $\frac{2}{15\pi} X_m$   &  $\pi$  \\
+        16         &  $-$         &       $-$      & $-$  \\ \bottomrule
         \end{tabular}
+        \hspace{0.6180339887498948cm}
+        \begin{tabular}{@{}ccc@{}}
+        \toprule
+        \multicolumn{3}{c}{$D = \frac{1}{4}, X_{\text{eff}}=\frac{X_m}{2}$} \\ \midrule
+        $\nu$      & $\hat{X}_\nu$   & $\phi_\nu$ \\ \hline
+        1          &  $\frac{\sqrt{2}}{\pi} X_m$      &      $0$        \\
+        2          &  $\frac{1}{\pi} X_m$         &       $0$        \\
+        3          &  $\frac{\sqrt{2}}{3\pi} X_m$         &   $0$           \\
+        4          &  $-$         &       $-$        \\
+        5          &  $\frac{\sqrt{2}}{5\pi} X_m$      &       $\pi$      \\
+        6          &  $\frac{1}{3\pi} X_m$         &       $\pi$      \\
+        7          &  $\frac{\sqrt{2}}{7\pi} X_m$         &          $\pi$   \\
+        8          &  $-$         &       $-$       \\
+        9          &  $\frac{\sqrt{2}}{9\pi} X_m$         &       $0$      \\
+        10         &  $\frac{1}{5\pi} X_m$         &       $0$       \\
+        11         &  $\frac{\sqrt{2}}{11\pi} X_m$         &       $0$      \\
+        12         &  $-$         &       $-$       \\
+        13         &  $\frac{\sqrt{2}}{13 \pi} X_m$         &      $\pi$       \\
+        14         &  $\frac{1}{7\pi} X_m$         &      $\pi$        \\
+        15         &  $\frac{\sqrt{2}}{15\pi} X_m$         &      $\pi$       \\
+        16         &  $-$         &       $-$       \\ \bottomrule
+        \end{tabular}
+        \hspace{0.6180339887498948cm}
+        \begin{tabular}{@{}ccc@{}}
+        \toprule
+        \multicolumn{3}{c}{$D = \frac{1}{8}, X_{\text{eff}}=\frac{X_m}{\sqrt{8}}$} \\ \midrule
+        $\nu$      & $\hat{X}_\nu$   & $\phi_\nu$ \\ \hline
+        1          &  $\frac{\sqrt{2-\sqrt{2}}}{\pi} X_m$      &      $0$        \\
+        2          &  $\frac{\sqrt{2}}{2\pi}X_m$         &       $0$        \\
+        3          &  $\frac{\sqrt{2 + \sqrt{2}}}{3\pi}X_m$         &   $0$           \\
+        4          &  $\frac{1}{2}X_m$         &       $0$        \\
+        5          &  $\frac{\sqrt{2 + \sqrt{2}}}{5\pi}X_m$      &       $0$      \\
+        6          &  $\frac{\sqrt{2}}{16\pi}X_m$         &       $0$      \\
+        7          &  $\frac{\sqrt{2 - \sqrt{2}}}{7\pi}X_m$         &          $0$   \\
+        8          &  $-$         &       $-$       \\
+        9          &  $\frac{\sqrt{2 - \sqrt{2}}}{9\pi}X_m$         &       $\pi$      \\
+        10         &  $\frac{\sqrt{2}}{5\pi}X_m$         &       $\pi$       \\
+        11         &  $\frac{\sqrt{2 + \sqrt{2}}}{11\pi}X_m$         &       $\pi$      \\
+        12         &  $\frac{1}{6\pi}X_m$         &       $\pi$       \\
+        13         &  $\frac{\sqrt{2 + \sqrt{2}}}{13\pi}X_m$         &      $\pi$       \\
+        14         &  $\frac{\sqrt{2}}{7\pi}X_m$         &      $\pi$        \\
+        15         &  $\frac{\sqrt{2 - \sqrt{2}}}{15\pi}X_m$         &      $\pi$       \\
+        16         &  $-$         &       $-$       \\ \bottomrule
+        \end{tabular}
+        \egroup
       \end{center}
-    \end{table}
-
-    \begin{gather*}
-    \end{gather*}
 
   % 2.2
   \subsection{}
+    \begin{center}
+      \includegraphics[scale=0.5]{./R/2_2/2_2_function.pdf}
+    \end{center}
+
+    \begin{align*}
+      \underline{X}_\nu &= \frac{1}{T_1} \cdot \int_{\shortminus\frac{T_1}{2}}^{\frac{T_1}{2}}{ X_m \cos{(\omega_0 t) \cdot e^{-(j\nu\omega_0 t)}} \dif t }
+      &= \frac{X_m}{T_1} \cdot \left [ \frac{e^{-(j\nu\omega_0 t)}}{1} \right]_{\shortminus\frac{T_1}{2}}^{\frac{T_1}{2}}
+    \end{align*}
+
 
   % 2.3
   \subsection{}
+    \begin{center}
+      \begin{circuitikz}
+
+        \draw (0,0) to[V, v=$u_0(t)$] (0,-3);
+        \draw (0,0) to[R, l=$R_1$, ] (5,0);
+        %\draw (2,0) to[L, l=$L$, i=$\underline{I}$] (6,0);
+        \draw (5,0) to[C, l=$C$, *-*] (5,-3);
+        \draw (7,0) to[C, l=$R_2$, *-*] (7,-3);
+        \draw (0,-3) to[short] (9.25,-3);
+        \draw (5,0) to[short] (9.25,0);
+        \draw (9.25,0) to[open, v^=$u_2(t)$, o-o] (9.25,-3);
+
+      \end{circuitikz}
+    \end{center}
+
+    \begin{gather*}
+      \underline{U}_2 = \underline{U_0} \cdot \dfrac{ \frac{1}{ j \omega C + \frac{1}{R_2} }  }{ R_1 + \frac{1}{ j \omega C + \frac{1}{R_2} } } = \frac{\underline{U}_0 \cdot R_2}{R_1+R_2+ j \omega C R_1 R_2}\\
+      \text{\small Betrag:}\\
+      \hat{U}_2 = \frac{\hat{U}_0 \cdot R_2}{\sqrt{(R_1+R_2)^2 + (\omega C R_1 R_2)^2}}\\\\
+      \text{\small Phase:}\\
+      \phi_{\underline{U}_2} = \phi_{\underline{U}_0} - \arctan{ \frac{\omega C R_1 R_2}{R_1+R_2} }
+    \end{gather*}
 
 \section{Versuchsaufgaben}
   % 3.1
   \subsection{}
 
+
+
   % 3.2
   \subsection{}
-  
+
   % 3.3
   \subsection{}
 
