@@ -51,7 +51,7 @@ p <- ggplot(data.frame(x=c(0,2), y=c(0,2)), aes(x=x)) +
 
         theme_minimal() + # maybe theme_bw()
         theme(legend.position="none", plot.title = element_text(color = "gray21", size=1.6180339887498948^5), plot.subtitle = element_text(color = "grey80", size=1.6180339887498948^5)) +
-        ggtitle(bquote("x(t)")) +
+        ggtitle(bquote("U"[2]~"(t)")) +
 
         stat_function(fun = fun, colour   = indie_wave_color, n=2000)+
         stat_function(fun = fun2, colour  = function_color, n=2000)+
@@ -61,6 +61,8 @@ p <- ggplot(data.frame(x=c(0,2), y=c(0,2)), aes(x=x)) +
 
         xlab(xlabel) +
         ylab(ylabel)  +
+
+        geom_segment(x = -epsilon, y= 0.455, xend= epsilon, yend=0.455, color=indie_wave_color, linetype="dashed") +
 
         scale_y_continuous(limits=c(-0.145898034, 1.6180339887498948), breaks=c(0,Xm, 1.6180339887498948), labels=c(0, bquote("U"["0m"]), "")) +
         scale_x_continuous(limits=c(-epsilon, epsilon), breaks=xbreaks, labels=xlabels)
