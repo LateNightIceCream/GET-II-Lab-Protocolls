@@ -214,9 +214,60 @@
     \end{center}
 
     \begin{align*}
-      \underline{X}_\nu &= \frac{1}{T_1} \cdot \int_{\shortminus\frac{T_1}{2}}^{\frac{T_1}{2}}{ X_m \cos{(\omega_0 t) \cdot e^{-(j\nu\omega_0 t)}} \dif t }
-      &= \frac{X_m}{T_1} \cdot \left [ \frac{e^{-(j\nu\omega_0 t)}}{1} \right]_{\shortminus\frac{T_1}{2}}^{\frac{T_1}{2}}
+      \underline{X}_\nu &= \frac{1}{T_1} \cdot \int_{\shortminus\frac{T_1}{2}}^{\frac{T_1}{2}}{ X_m \cos{(\frac{\pi}{T_1} t) \cdot e^{-(j\nu \frac{\pi}{T_1} t)}} \dif t }\\
+      &= \frac{X_m}{T_1} \cdot \left [ \frac{e^{-(j\nu \frac{\pi}{T_1} t)}}{(-j \nu \frac{\pi}{T_1})^2+(\frac{\pi}{T_1})^2} \cdot \left( (-j\nu\frac{\pi}{T_1})\cdot \cos{(\frac{\pi}{T_1} t )} + \frac{\pi}{T_1}\cdot \sin{(\frac{\pi}{T_1} t)} \right) \right]_{\shortminus\frac{T_1}{2}}^{\frac{T_1}{2}}\\
+      &= \frac{X_m}{\pi (1-4\nu^2)} \cdot \left[  e^{-j\nu\pi} \cdot (\underbrace{-j 2 \nu \cdot \cos{(\frac{\pi}{2})}}_0+1) - e^{j\nu\pi} \cdot (\underbrace{-j 2 \nu \cdot \cos{(-\frac{\pi}{2})}}_0-1) \right]\\
+      &= \frac{X_m}{\pi (1-4\nu^2)} \cdot (e^{-j\nu\pi}+e^{j\nu\pi}) = 2 \frac{X_m}{\pi (1-4\nu^2)} \cdot \left( \frac{e^{j\nu\pi}+e^{-j\nu\pi}}{2} \right)
     \end{align*}
+
+    \vspace{0.021276873\paperheight}
+    \begin{equation*}
+      \underline{X}_\nu =  \frac{2 X_m}{\pi (1-4\nu^2)} \cdot \cos{(\nu \pi)}
+    \end{equation*}
+
+    \begin{gather*}
+      \hat{X}_\nu = 2 \cdot \mid \underline{X}_\nu \mid = \frac{4 \cdot X_m}{\pi (1-4\nu^2)}\cdot \cos{(\nu \pi)}
+    \end{gather*}
+    \begin{gather*}
+      \text{\small Mittelwert:}\\
+      X_0 = \frac{1}{T_1} \cdot \int_{\shortminus\frac{T_1}{2}}^{\frac{T_1}{2}}{X_m \cdot \cos{(\frac{\pi}{T_1} t)} \dif t} = \frac{X_m}{\pi} \cdot \left[\sin{(\frac{\pi}{T_1}t)} \right]_{\shortminus\frac{T_1}{2}}^{\frac{T_1}{2}}\\
+      X_0 = \frac{2 X_m}{\pi}
+    \end{gather*}
+
+    \begin{gather*}
+      \text{\small Effektivwert:}\\
+      X_{\text{eff}} = \sqrt{\frac{X_m^2}{T_1} \cdot \int_{\shortminus\frac{T_1}{2}}^{\frac{T_1}{2}}{(\cos{(\frac{\pi}{T_1} t))^2} \dif t}}\\
+      X_{\text{eff}} = \sqrt{ \frac{X_m^2}{T_1} \cdot \left[  \frac{t}{2} + \frac{\sin{(\frac{2\pi}{T_1})t}}{4 \cdot \frac{\pi}{T_1}} \right]_{\shortminus\frac{T_1}{2}}^{\frac{T_1}{2}} }\\
+      X_{\text{eff}} = \frac{X_m}{\sqrt{2}}
+    \end{gather*}
+
+    \begin{center}
+      \bgroup
+      \def\arraystretch{1.31}
+      \begin{tabular}{@{}ccc@{}}
+      \toprule
+      \multicolumn{3}{c}{$D = \frac{1}{4}, X_{\text{eff}}=\frac{X_m}{2}$} \\ \midrule
+      $\nu$      & $\hat{X}_\nu$   & $\phi_\nu$ \\ \hline
+      1          &  $\frac{4}{3\pi} X_m$      &      $0$        \\
+      2          &  $\frac{4}{15\pi} X_m$         &       $\pi$        \\
+      3          &  $\frac{4}{35\pi} X_m$         &   $0$           \\
+      4          &  $\frac{4}{63\pi} X_m$         &       $\pi$        \\
+      5          &  $\frac{4}{99\pi} X_m$      &       $0$      \\
+      6          &  $\frac{4}{143\pi} X_m$         &       $\pi$      \\
+      7          &  $\frac{4}{195\pi} X_m$         &          $0$   \\
+      8          &  $\frac{4}{255\pi} X_m$         &       $\pi$       \\
+      9          &  $\frac{4}{323\pi} X_m$         &       $0$      \\
+      10         &  $\frac{4}{399\pi} X_m$         &       $\pi$       \\
+      11         &  $\frac{4}{483\pi} X_m$         &       $0$      \\
+      12         &  $\frac{4}{575\pi} X_m$         &       $\pi$       \\
+      13         &  $\frac{4}{675\pi} X_m$         &      $0$       \\
+      14         &  $\frac{4}{783\pi} X_m$         &      $\pi$        \\
+      15         &  $\frac{4}{899\pi} X_m$         &      $0$       \\ \bottomrule
+      \end{tabular}
+      \hspace{0.6180339887498948cm}
+      \egroup
+    \end{center}
+    \vspace{0.021276873\paperheight}
 
 
   % 2.3
@@ -243,6 +294,10 @@
       \text{\small Phase:}\\
       \phi_{\underline{U}_2} = \phi_{\underline{U}_0} - \arctan{ \frac{\omega C R_1 R_2}{R_1+R_2} }
     \end{gather*}
+
+    \begin{center}
+      \includegraphics[scale=0.5]{./R/2_3/2_3_function.pdf}
+    \end{center}
 
 \pagebreak
 \section{Versuchsaufgaben}
@@ -323,6 +378,8 @@
           \end{tabular}
           \egroup
     \end{center}
+
+
     \begin{center}
       \includegraphics[scale=0.5]{./R/3_1/3_1_ASpektrum.pdf}
       \vspace{0.021276873\paperheight}
