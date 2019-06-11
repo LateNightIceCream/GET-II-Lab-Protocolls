@@ -1,0 +1,72 @@
+%//////////////////////////////////
+%/// P R E A M B L E
+
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[singlespacing]{setspace}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{gensymb}
+\usepackage{breqn}
+\usepackage{indentfirst}
+\usepackage{siunitx}
+\usepackage{tabularx, booktabs}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+\usepackage{pdfpages}
+
+\usepackage{multicol}
+\usepackage{supertabular}
+
+\usepackage{svg}
+
+\widowpenalty = 4500
+\clubpenalty  = 4500
+
+\setlength{\jot}{10pt} %indents
+
+
+\newcommand*\dif{\mathop{}\!\mathrm{d}}
+\newcommand*\shortminus{\scalebox{0.5}[1.0]{\( - \)}}
+%\newcommand{\euler}{\mathrm{e}}
+%\newcommand{\ramuno}{\mathrm{j}}
+
+%%========================================
+%% circuitikz properties
+\usepackage[european, straightvoltages]{circuitikz}
+%\ctikzvalof{voltage/distance from node = .2}
+%\ctikzset{voltage/distance from node  =.5}% in \pgf@circ@Rlen units
+%\ctikzset{voltage/distance from line  =.25}% pos. between 0 and 1
+%\ctikzset{voltage/bump b/.initial     =1.5}%
+
+\ctikzset{current/distance            = .618}
+
+
+%%========================================
+
+%%
+%% Path settings
+%%
+\graphicspath{ {./graphics/} }
+
+
+%//////////////////////////////////
+%/// D O C U M E N T
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %\includepdf{Deckblatt.pdf}
+  \includepdf{./titlepage/titlepage.pdf}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Vorbereitungsaufgaben}
+\section{Versuchsaufgaben}
+
+
+\end{document}
