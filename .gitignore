@@ -2,6 +2,8 @@
 *.fdb_latexmk
 *.fls
 *.log
+*.blg
+*.bbl
 *.synctex.gz
 Deckblatt.pdf
 *Versuch*
