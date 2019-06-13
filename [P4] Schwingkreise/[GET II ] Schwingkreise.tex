@@ -3,6 +3,7 @@
 
 \documentclass[a4paper, 12pt]{article}
 
+\usepackage{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[singlespacing]{setspace}
 \usepackage{amsmath}
@@ -17,25 +18,30 @@
 \usepackage{indentfirst}
 \usepackage{siunitx}
 \usepackage{tabularx, booktabs}
-\newcolumntype{Y}{>{\centering\arraybackslash}X}
-
+\usepackage[calcwidth]{titlesec}
+%\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\usepackage{xcolor}
 \usepackage{pdfpages}
 
 \usepackage{multicol}
-\usepackage{supertabular}
+%\usepackage{supertabular}
 
 \usepackage{svg}
 
 \widowpenalty = 4500
 \clubpenalty  = 4500
 
-\setlength{\jot}{10pt} %indents
+
 
 
 \newcommand*\dif{\mathop{}\!\mathrm{d}}
 \newcommand*\shortminus{\scalebox{0.5}[1.0]{\( - \)}}
-%\newcommand{\euler}{\mathrm{e}}
-%\newcommand{\ramuno}{\mathrm{j}}
+\newcommand{\hspa}{\hspace{0.02128623625220817\paperwidth}}
+\newcommand{\hspb}{\hspace{0.013155617496424828\paperwidth}}
+
+\definecolor{hsblue}{HTML}{0cb5df}
+\definecolor{hsblueshade}{HTML}{b6e9f5}
+
 
 %%========================================
 %% circuitikz properties
@@ -55,6 +61,26 @@
 %%
 \graphicspath{ {./graphics/} }
 
+\geometry{
+ a4paper,
+ total={0.6180339887498948\paperwidth,0.6180339887498948\paperheight},
+ top = 0.1458980337503154\paperheight,
+ bottom = 0.1458980337503154\paperheight
+ }
+
+\linespread{1.1458980337503154}
+
+%\titleformat{\section}{\Large}{\thesection}{1.6180339887498948 em}{}[]
+\titleformat{\section}[hang]{\Large\bfseries}{\thesection\hspb\textcolor{hsblueshade}{|}\hspa}{0pt}{\Large\bfseries}
+%\titleformat{\section}[\big]{block}{}{2in}{}[]
+%\titleformat{<command>}[<shape>]{<format>}{<label>}{<sep>}{<before-code>}[<after-code>]
+
+\setlength{\parskip}{0.013155617496424828\paperheight} % paragraph spacing
+
+\titlespacing{\section}       {0em}{0em}{0em}
+%\titlespacing{\subsection}   {0em}{.50em}{.25em}
+%\titlespacing{\subsubsection}{0em}{.50em}{.25em}
+%\titlespacing{\paragraph}    {0em}{.25em}{.25em}
 
 %//////////////////////////////////
 %/// D O C U M E N T
@@ -66,6 +92,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Vorbereitungsaufgaben}
+
+
+  \subsection{}
+    \begin{center}
+      \includegraphics[scale=0.3819660112501051]{./R/RLC_Zeiger_Impedanz.pdf}
+    \end{center}
+
 \section{Versuchsaufgaben}
 
 
