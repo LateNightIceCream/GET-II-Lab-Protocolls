@@ -21,13 +21,13 @@ angleDisplayX <- 0.1618
 
 Rcolor        <- "#00BF7D2F"
 RcolorNoAlpha <- "#00BF7D"
-Lcolor        <- "#F8766D2F"
-LcolorNoAlpha <- "#F8766D"
+Lcolor        <- "#B983FF2F"
+LcolorNoAlpha <- "#B983FF"
 Tcolor        <- "#00BCD8"
 AngleColor    <- "#FF67A4"
 
 
-pdf("ESBp_Spule.pdf", width = output_width, height = output_height)
+pdf("ESBs_Kondensator.pdf", width = output_width, height = output_height)
 
 ####################################################################
 
@@ -43,8 +43,8 @@ p9 <- ggplot(data.frame(x=c(0, 2),y=c(0,2)), aes(x,y)) +
         xlab(xlabel)  +
         ylab(ylabel)  +
 
-        scale_y_continuous(limits=c(-1.23606797749978964,0),  breaks = c(0,-1), labels=c( "",bquote("-"~over(1,omega ~ "L"["p"]))) ) +
-        scale_x_continuous(limits=c(0, 1.23606797749978964),  breaks = c(0,Rpos), labels=c("", bquote(over(1,"R"["pL"])) ) , position="top")+
+        scale_y_continuous(limits=c(-1.23606797749978964,0),  breaks = c(0,-1), labels=c( "",bquote("-"~over(1,omega ~ "C"["s"]))) ) +
+        scale_x_continuous(limits=c(0, 1.23606797749978964),  breaks = c(0,Rpos), labels=c("", bquote("R"["sC"]) ) , position="top")+
 
         #lines "#E58700"
         # L
@@ -62,6 +62,6 @@ p9 <- ggplot(data.frame(x=c(0, 2),y=c(0,2)), aes(x,y)) +
 
         annotate(geom="text", x=angleDisplayX*0.333333, y=-((tan(angle) * angleDisplayX + angleDisplayX * tan(pi/2-angle)/2)*0.6180339887498948), label=expression(delta), color=AngleColor, size=12.36) +
 
-        annotate(geom="text", x=Rpos+0.0618, y=-1.0618, label=expression(underline(Y)), color=Tcolor, size=12.36)
+        annotate(geom="text", x=Rpos+0.0618, y=-1.0618, label=expression(underline(Z)), color=Tcolor, size=12.36)
 
 p9

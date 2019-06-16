@@ -92,76 +92,99 @@
 
 \section{Vorbereitungsaufgaben}
 
-
+  % 1.1
   \subsection{}
 
-  \begin{center}
+    \begin{center}
 
-    \subsubsection*{Spule}
-    \large Reihenmodell
+      \subsubsection*{Spule}
+      \large Reihenmodell
+
+        \begin{circuitikz}
+
+          \draw (-0.3819660112501051,0) to[R, l=$R_{sL}$, o-] (1.6180339887498948,0);
+          \draw (1.6180339887498948,0) to[L, l=$L_s$, -o] (1.6180339887498948*2+0.3819660112501051,0);
+
+        \end{circuitikz}
+      \end{center}
+
+    \begin{center}
+      \includegraphics[scale=0.3819660112501051]{./R/2_1/ESBs_Spule.pdf}
+    \end{center}
+
+    Der Verlustwinkel $\delta$ ist der Winkel der Spulenimpedanz $\underline{Z}$ mit der imaginären Achse der gaußschen Zahlenebene. $\tan{\delta}$ wird auch Verlustfaktor $d$ genannt.
+
+    $$\tan{\delta} = \frac{\omega L_s}{R_{sL}}$$
+
+    Die Güte $Q$ der realen Induktivität ist demnach als Kehrwert des Verlustfaktors definiert:
+
+    $$ Q_{Ls} = \frac{1}{\tan{\delta}} = \frac{R_{sL}}{\omega L_s}$$
+
+    % Parallelmodell Spule
+    \vspace{0.02128623625220817\paperheight}
+    \begin{center}
+    \large Parallelmodell
 
       \begin{circuitikz}
 
-        \draw (-0.3819660112501051,0) to[R, l=$R_{sL}$, o-] (1.6180339887498948,0);
-        \draw (1.6180339887498948,0) to[L, l=$L_s$, -o] (1.6180339887498948*2+0.3819660112501051,0);
+        \def\innerwidth{3}
+        \def\innerheight{\innerwidth*0.3819660112501051}
+        \def\klemmlength{\innerheight*0.6180339887498948}
+
+        \draw (0,\innerheight/2)  to[R, l=$R_{pL}$] (\innerwidth,\innerheight/2);
+        \draw (0,-\innerheight/2) to[L, l=$L_p$] (\innerwidth,-\innerheight/2);
+        \draw (-\klemmlength,\klemmlength/4) to[short, o-] (0,\klemmlength/4);
+        \draw (0,-\innerheight/2)  to[short] (0,\innerheight/2);
+        \draw (\innerwidth,-\innerheight/2)  to[short] (\innerwidth,\innerheight/2);
+        \draw (\innerwidth,\klemmlength/4) to[short, -o] (\innerwidth+\klemmlength,\klemmlength/4);
 
       \end{circuitikz}
     \end{center}
 
-  \begin{center}
-    \includegraphics[scale=0.3819660112501051]{./R/2_1/ESBs_Spule.pdf}
-  \end{center}
-
-  Der Verlustwinkel $\delta$ ist der Winkel der Spulenimpedanz mit der imaginären Achse der gaußschen Zahlenebene. $\tan{\delta}$ wird auch Verlustfaktor $d$ genannt.
-
-  $$\tan{\delta} = \frac{\omega L_s}{R_{sL}}$$
-
-  Die Güte $Q$ der realen Induktivität ist demnach als der Kehrwert des Verlustfaktors definiert:
-
-  $$ Q_{Ls} = \frac{1}{\tan{\delta}} = \frac{R_{sL}}{\omega L_s}$$
-
-  % Parallelmodell Spule
-  \vspace{0.013155617496424828\paperheight}
-  \begin{center}
-  \large Parallelmodell
-
-    \begin{circuitikz}
-
-      \def\innerwidth{3}
-      \def\innerheight{\innerwidth*0.3819660112501051}
-      \def\klemmlength{\innerheight*0.6180339887498948}
-
-      \draw (0,\innerheight/2)  to[R, l=$R_{pL}$] (\innerwidth,\innerheight/2);
-      \draw (0,-\innerheight/2) to[L, l=$L_p$] (\innerwidth,-\innerheight/2);
-      \draw (-\klemmlength,\klemmlength/4) to[short, o-] (0,\klemmlength/4);
-      \draw (0,-\innerheight/2)  to[short] (0,\innerheight/2);
-      \draw (\innerwidth,-\innerheight/2)  to[short] (\innerwidth,\innerheight/2);
-      \draw (\innerwidth,\klemmlength/4) to[short, -o] (\innerwidth+\klemmlength,\klemmlength/4);
-
-    \end{circuitikz}
-  \end{center}
-
-  \begin{center}
-    \includegraphics[scale=0.3819660112501051]{./R/2_1/ESBp_Spule.pdf}
-  \end{center}
-
-
-  \subsubsection*{Kondensator}
-  % Reihenmodell Kondensator
-  \begin{center}
-
-    \large Reihenmodell
-
-      \begin{circuitikz}
-
-        \draw (-0.3819660112501051,0) to[R, l=$R_{sC}$, o-] (1.6180339887498948,0);
-        \draw (1.6180339887498948,0) to[C, l=$C_s$, -o] (1.6180339887498948*2+0.3819660112501051,0);
-
-      \end{circuitikz}
+    \begin{center}
+      \includegraphics[scale=0.3819660112501051]{./R/2_1/ESBp_Spule.pdf}
     \end{center}
+
+    Der Verlustwinkel $\delta$ ist der Winkel der Spulenadmittanz $\underline{Y}$ mit der imaginären Achse der gaußschen Zahlenebene (Betrag).
+
+    $$\mid \tan{\delta} \mid=  \dfrac{\dfrac{1}{R_{pL}}}{\dfrac{1}{\omega L_p}} = \frac{\omega L_p}{R_{pL}}$$
+
+    Kehrwert des Verlustfaktors:
+
+    $$ Q_{Lp} = \frac{1}{\tan{\delta}} = \frac{R_{pL}}{\omega L_p}$$
+
+    $$ Q_{Lp} = Q_{Ls} = \frac{R_{pL}}{\omega L_p} = \frac{\omega L_s}{R_{sL}}$$
+
+    \pagebreak
+    \subsubsection*{Kondensator}
+    % Reihenmodell Kondensator
+    \begin{center}
+
+      \large Reihenmodell
+
+        \begin{circuitikz}
+
+          \draw (-0.3819660112501051,0) to[R, l=$R_{sC}$, o-] (1.6180339887498948,0);
+          \draw (1.6180339887498948,0) to[C, l=$C_s$, -o] (1.6180339887498948*2+0.3819660112501051,0);
+
+        \end{circuitikz}
+      \end{center}
+
+      \begin{center}
+        \includegraphics[scale=0.3819660112501051]{./R/2_1/ESBs_Kondensator.pdf}
+      \end{center}
+
+      Der Verlustwinkel $\delta$ ist der Winkel der Kondensatorimpedanz $\underline{Z}$ mit der imaginären Achse der gaußschen Zahlenebene (Betrag).
+
+      $$\mid \tan{\delta} \mid = \dfrac{R_{sC}}{\dfrac{1}{\omega C_s}} = R_{sC} \cdot \omega C_s$$
+
+      Somit ist die Kondensatorgüte des Reihenmodells:
+
+      $$Q_{Cs}= \frac{1}{\tan{\delta}} = \frac{1}{R_{sC} \cdot \omega C_s}$$
+
 
     % Parallelmodell Kondensator
-    \vspace{0.013155617496424828\paperheight}
+    \vspace{0.02128623625220817\paperheight}
     \begin{center}
     \large Parallelmodell
 
@@ -180,6 +203,32 @@
 
       \end{circuitikz}
     \end{center}
+
+    \begin{center}
+      \includegraphics[scale=0.3819660112501051]{./R/2_1/ESBp_Kondensator.pdf}
+    \end{center}
+
+    Der Verlustwinkel $\delta$ ist der Winkel der Kondensatoradmittanz $\underline{Y}$ mit der imaginären Achse der gaußschen Zahlenebene.
+
+    $$\tan{\delta} = \dfrac{\frac{1}{R_{pC}}}{\omega C_p} = \frac{1}{R_{pC} \cdot \omega C_p}$$
+
+    Kehrwert des Verlustfaktors:
+
+    $$ Q_{Cp} = \frac{1}{\tan{\delta}} = R_{pC} \cdot \omega C_p $$
+
+    $$ Q_{Cs} = Q_{Cp} = \frac{1}{R_{sC} \cdot \omega C_s} = R_{pC} \cdot \omega C_p $$
+
+  % 1.2
+  \subsection{}
+
+
+  \subsection{}
+  \subsection{}
+  \subsection{}
+  \subsection{}
+  \subsection{}
+  \subsection{}
+  \subsection{}
 \section{Versuchsaufgaben}
 
 
