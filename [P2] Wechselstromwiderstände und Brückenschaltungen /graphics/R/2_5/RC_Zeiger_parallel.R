@@ -17,7 +17,7 @@ Rcolor <- "#00BF7D"
 Lcolor <- "#FF67A4"
 Tcolor <- "#00BCD8"
 
-pdf("RC_Zeiger_parallel.pdf", width = output_width, height = output_height)
+pdf("ESB_Spule.pdf", width = output_width, height = output_height)
 
 ####################################################################
 

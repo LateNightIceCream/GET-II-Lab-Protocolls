@@ -70,10 +70,7 @@
 
 \linespread{1.1458980337503154}
 
-%\titleformat{\section}{\Large}{\thesection}{1.6180339887498948 em}{}[]
 \titleformat{\section}[hang]{\Large\bfseries}{\thesection\hspb\textcolor{hsblueshade}{|}\hspa}{0pt}{\Large\bfseries}
-%\titleformat{\section}[\big]{block}{}{2in}{}[]
-%\titleformat{<command>}[<shape>]{<format>}{<label>}{<sep>}{<before-code>}[<after-code>]
 
 \setlength{\parskip}{0.013155617496424828\paperheight} % paragraph spacing
 
@@ -89,16 +86,100 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %\includepdf{Deckblatt.pdf}
   \includepdf{./titlepage/titlepage.pdf}
+  \clearpage
+  \setcounter{page}{1}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Vorbereitungsaufgaben}
 
 
   \subsection{}
-    \begin{center}
-      \includegraphics[scale=0.3819660112501051]{./R/RLC_Zeiger_Impedanz.pdf}
+
+  \begin{center}
+
+    \subsubsection*{Spule}
+    \large Reihenmodell
+
+      \begin{circuitikz}
+
+        \draw (-0.3819660112501051,0) to[R, l=$R_{sL}$, o-] (1.6180339887498948,0);
+        \draw (1.6180339887498948,0) to[L, l=$L_s$, -o] (1.6180339887498948*2+0.3819660112501051,0);
+
+      \end{circuitikz}
     \end{center}
 
+  \begin{center}
+    \includegraphics[scale=0.3819660112501051]{./R/2_1/ESBs_Spule.pdf}
+  \end{center}
+
+  Der Verlustwinkel $\delta$ ist der Winkel der Spulenimpedanz mit der imaginären Achse der gaußschen Zahlenebene. $\tan{\delta}$ wird auch Verlustfaktor $d$ genannt.
+
+  $$\tan{\delta} = \frac{\omega L_s}{R_{sL}}$$
+
+  Die Güte $Q$ der realen Induktivität ist demnach als der Kehrwert des Verlustfaktors definiert:
+
+  $$ Q_{Ls} = \frac{1}{\tan{\delta}} = \frac{R_{sL}}{\omega L_s}$$
+
+  % Parallelmodell Spule
+  \vspace{0.013155617496424828\paperheight}
+  \begin{center}
+  \large Parallelmodell
+
+    \begin{circuitikz}
+
+      \def\innerwidth{3}
+      \def\innerheight{\innerwidth*0.3819660112501051}
+      \def\klemmlength{\innerheight*0.6180339887498948}
+
+      \draw (0,\innerheight/2)  to[R, l=$R_{pL}$] (\innerwidth,\innerheight/2);
+      \draw (0,-\innerheight/2) to[L, l=$L_p$] (\innerwidth,-\innerheight/2);
+      \draw (-\klemmlength,\klemmlength/4) to[short, o-] (0,\klemmlength/4);
+      \draw (0,-\innerheight/2)  to[short] (0,\innerheight/2);
+      \draw (\innerwidth,-\innerheight/2)  to[short] (\innerwidth,\innerheight/2);
+      \draw (\innerwidth,\klemmlength/4) to[short, -o] (\innerwidth+\klemmlength,\klemmlength/4);
+
+    \end{circuitikz}
+  \end{center}
+
+  \begin{center}
+    \includegraphics[scale=0.3819660112501051]{./R/2_1/ESBp_Spule.pdf}
+  \end{center}
+
+
+  \subsubsection*{Kondensator}
+  % Reihenmodell Kondensator
+  \begin{center}
+
+    \large Reihenmodell
+
+      \begin{circuitikz}
+
+        \draw (-0.3819660112501051,0) to[R, l=$R_{sC}$, o-] (1.6180339887498948,0);
+        \draw (1.6180339887498948,0) to[C, l=$C_s$, -o] (1.6180339887498948*2+0.3819660112501051,0);
+
+      \end{circuitikz}
+    \end{center}
+
+    % Parallelmodell Kondensator
+    \vspace{0.013155617496424828\paperheight}
+    \begin{center}
+    \large Parallelmodell
+
+      \begin{circuitikz}
+
+        \def\innerwidth{3}
+        \def\innerheight{\innerwidth*0.3819660112501051}
+        \def\klemmlength{\innerheight*0.6180339887498948}
+
+        \draw (0,\innerheight/2)  to[R, l=$R_{pC}$] (\innerwidth,\innerheight/2);
+        \draw (0,-\innerheight/2) to[C, l_=$C_p$] (\innerwidth,-\innerheight/2);
+        \draw (-\klemmlength,\klemmlength/4) to[short, o-] (0,\klemmlength/4);
+        \draw (0,-\innerheight/2)  to[short] (0,\innerheight/2);
+        \draw (\innerwidth,-\innerheight/2)  to[short] (\innerwidth,\innerheight/2);
+        \draw (\innerwidth,\klemmlength/4) to[short, -o] (\innerwidth+\klemmlength,\klemmlength/4);
+
+      \end{circuitikz}
+    \end{center}
 \section{Versuchsaufgaben}
 
 
