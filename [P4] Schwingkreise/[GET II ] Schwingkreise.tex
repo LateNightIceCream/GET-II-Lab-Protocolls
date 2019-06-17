@@ -327,7 +327,6 @@
 
         \draw (-\klemmlength, \klemmlength/2) to[short, o-] (0,\klemmlength/2);
         \draw (\klemmlength+\innerwidth, \klemmlength/2) to[short, o-] (\innerwidth,\klemmlength/2);
-
       \end{circuitikz}
     \end{center}
     \vspace{0.013155617496424828\paperheight}
@@ -416,9 +415,8 @@
             \draw (1.6180339887498948,0) to[L, l=$L_s$, -o] (1.6180339887498948*2+0.3819660112501051,0);
           \end{circuitikz}
 
-        \\
         $\implies$
-        
+
         \begin{circuitikz}
 
           \def\innerwidth{3}
@@ -437,16 +435,197 @@
       \end{multicols}
     \end{center}
 
+    \begin{align*}
+      \underline{Y}_s &= \underline{Y}_p\\
+      \frac{1}{R_s + j \omega_0 L_s} &= \frac{1}{R_p}-j\frac{1}{\omega_0 L_p}\\
+      %\intertext{\small Trennung in Real- und Imaginärteil zum Vergleich:}
+      \frac{R_s}{R_s^2+\omega_0^2 L_s^2}-j\frac{\omega_0 L_s}{R_s^2 L_s + \omega_0^2 L_s} &= \frac{1}{R_p}-j\frac{1}{\omega_0 L_p}
+    \end{align*}
 
+    \small Realteilvergleich:
+    \begin{gather*}
+      R_{p} = 1+\frac{\omega_0^2 L_s^2}{R_s^2} = 1 + Q_L^2
+    \end{gather*}
+    \small Imaginärteilvergleich:
+    \begin{gather*}
+      L_{p} = L_s\left( 1+ \frac{R_{s}^2}{\omega_0^2 L_s^2} \right) = 1+ \frac{1}{Q_L^2}
+    \end{gather*}
+
+    $$R_{p} = 575.3 \,\ \si{\kilo\ohm}\text{,} \,\ L_p = 1.30023 \,\ \si{\henry} \approx L_s$$
 
   % 1.6
   \subsection{}
+    \begin{center}
+      \large Stromspeisung
+    \end{center}
+
+    \begin{center}
+      \begin{circuitikz}
+
+        \draw (0.3819660112501051, 1.618/2) to[short] (0.3819660112501051 + 1, 1.618/2);
+        \draw (0.3819660112501051, -1.618/2) to[short] (0.3819660112501051 + 1, -1.618/2);
+
+        \draw (-1.618, -1.618/2) to[ioosource] (-1.618, 1.618/2)
+                                 to[short, -o, i=$\underline{I}_0$] (0.3819660112501051, 1.618/2);
+        \draw (-1.618, -1.618/2) to[short, -o] (0.3819660112501051, -1.618/2);
+
+        \draw (0.3819660112501051 + 1, 1.618/2) to[R, l=$\underline{Z}_{SK}$] (0.3819660112501051 + 1, -1.618/2);
+
+        \draw[draw=black] (0.3819660112501051 + 0.23606797749978964, 1.618) rectangle ++(0.3819660112501051*6, -1.618*2);
+
+        \node[draw] at (0.3819660112501051*6-0.05572809000084119, -1.618/2-0.1458980337503154) {SK};
+      \end{circuitikz}
+    \end{center}
+
+    $$\underline{U} = \underline{Z}_{SK} \cdot \underline{I}_0, \,\ \text{ $\underline{I}_0 =$ konst.} \implies \underline{U} \sim \underline{Z}_{SK}$$
+
+    \begin{center}
+      \large Spannungsspeisung
+    \end{center}
+
+    \begin{center}
+      \begin{circuitikz}
+
+        \draw (0.3819660112501051, 1.618/2) to[short] (0.3819660112501051 + 1, 1.618/2);
+        \draw (0.3819660112501051, -1.618/2) to[short] (0.3819660112501051 + 1, -1.618/2);
+
+        \draw (-1.618, 1.618/2) to[vsourcesin, v_=$\underline{U}_0$] (-1.618, -1.618/2);
+        \draw (-1.618, 1.618/2) to[short, -o] (0.3819660112501051, 1.618/2);
+        \draw (-1.618, -1.618/2) to[short, -o] (0.3819660112501051, -1.618/2);
+
+        \draw (0.3819660112501051 + 1, 1.618/2) to[R, l=$\underline{Z}_{SK}$] (0.3819660112501051 + 1, -1.618/2);
+
+        \draw[draw=black] (0.3819660112501051 + 0.23606797749978964, 1.618) rectangle ++(0.3819660112501051*6, -1.618*2);
+
+        \node[draw] at (0.3819660112501051*6-0.05572809000084119, -1.618/2-0.1458980337503154) {SK};
+      \end{circuitikz}
+    \end{center}
+
+    $$\underline{I} = \underline{U} \cdot \underline{Y}_{SK}, \,\ \text{ $\underline{U}_0 =$ konst.} \implies \underline{I} \sim \underline{Y}_{SK}$$
 
   % 1.7
   \subsection{}
 
+    \begin{center}
+      \large Spannungsüberhöhung\\
+      \small (Nur im Reihenschwingkreis)
+    \end{center}
+
+    \begin{center}
+      \begin{circuitikz}
+        \draw (-0.3819660112501051, 0) to[short, o-] (0,0)
+                                       to[R, l=$R_s$, v=$\underline{U}_{R_s}$] (2,0)
+                                       to[L, l=$L_s$, v=$\underline{U}_{L_s}$] (4,0)
+                                       to[C, l=$C_s$, v=$\underline{U}_{C_s}$] (6,0)
+                                       to[short, -o] (6+0.3819660112501051,0);
+      \end{circuitikz}
+    \end{center}
+
+      $R_s$:
+      \begin{gather*}
+        \underline{U}_{R_s} = \frac{\underline{U} \cdot R_s}{R_s + j\left( \omega L_s - \frac{1}{\omega C_s} \right)}
+      \end{gather*}
+      \indent $L_s$:
+      \begin{gather*}
+        \underline{U}_{L_s} = \frac{\underline{U} \cdot j \omega L_s}{ R_s + j\left( \omega L_s - \frac{1}{\omega C_s} \right)}
+      \end{gather*}
+      \indent $C_s$:
+      \begin{gather*}
+        \underline{U}_{C_s} = \frac{\underline{U}}{ j \omega C_s\left(R_s + j\left( \omega L_s - \frac{1}{\omega C_s} \right)\right)}
+      \end{gather*}
+
+      bei $\omega = \omega_0$:
+
+      \begin{align*}
+        \underline{U}_{R_s} &= \frac{\underline{U} \cdot R_s}{R_s} = \underline{U}\\
+        \underline{U}_{L_s} &= j \underline{U} \cdot \frac{ \omega_0 L_s}{R_s} = j \underline{U} \cdot Q_L\\
+        \underline{U}_{C_s} &= -j \underline{U} \cdot \frac{1}{ \omega_0 C_s R_s}
+      \end{align*}
+
+      Beträge bei $\omega_0$:
+
+      \begin{align*}
+        \hat{U}_{R_s} &= \hat{U}\\
+        \hat{U}_{L_s} &= Q_L \cdot \underline{U}\\
+        \hat{U}_{C_s} &= Q_C \cdot \underline{U}
+      \end{align*}
+
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{center}
+      \large Stromüberhöhung\\
+      \small (Nur im Parallelschwingkreis)
+    \end{center}
+
+    \begin{center}
+      \begin{circuitikz}
+        \def\innerwidth{3}
+        \def\innerheight{\innerwidth*0.6180339887498948*1.6180339887498948}
+        \def\klemmlength{\innerheight*0.3819660112501051}
+
+
+        \draw (0,\innerheight/2)  to[R, l=$R_{p}$, i=$\underline{I}_{R_p}$] (\innerwidth,\innerheight/2);
+        \draw (0,0) to[L, l=$L_p$, i=$\underline{I}_{L_p}$, *-*] (\innerwidth,0);
+        \draw (0, -\innerheight/2) to[C, l=$C_p$, i=$\underline{I}_{C_p}$] (\innerwidth, -\innerheight/2);
+
+        %left short
+        \draw (0, -\innerheight/2) to[short] (0, \innerheight/2);
+        %right short
+        \draw (\innerwidth, -\innerheight/2) to[short] (\innerwidth, \innerheight/2);
+
+        \draw (-\klemmlength, \klemmlength/2) to[short, o-] (0,\klemmlength/2);
+        \draw (\klemmlength+\innerwidth, \klemmlength/2) to[short, o-] (\innerwidth,\klemmlength/2);
+      \end{circuitikz}
+    \end{center}
+
+    $R_p$:
+    \begin{gather*}
+      \underline{I}_{R_p} = \frac{\underline{I} \cdot \frac{1}{R_p}}{\frac{1}{R_p} + j\left( \omega C_p - \frac{1}{\omega L_p} \right)}
+    \end{gather*}
+    \indent $L_p$:
+    \begin{gather*}
+      \underline{I}_{L_p} = \frac{\underline{I}}{ j \omega L_p \left(\frac{1}{R_p} + j\left( \omega C_p - \frac{1}{\omega L_p} \right)\right)}
+    \end{gather*}
+    \indent $C_p$:
+    \begin{gather*}
+      \underline{I}_{C_p} = \frac{\underline{I} \cdot j \omega C_p}{ \frac{1}{R_p} + j\left( \omega C_p - \frac{1}{\omega L_p} \right)}
+    \end{gather*}
+
+    bei $\omega = \omega_0$:
+
+    \begin{align*}
+      \underline{I}_{R_p} &= \underline{I}\\
+      \underline{I}_{L_p} &= j \underline{I} \cdot \frac{R_p}{\omega_0 L_p} = j \underline{I} \cdot Q_L\\
+      \underline{I}_{C_p} &= -j \underline{I} \cdot \omega_0 R_p C_p = j \underline{I} \cdot Q_C
+    \end{align*}
+
+    Beträge bei $\omega_0$:
+
+    \begin{align*}
+      \hat{I}_{R_p} &= \hat{I}\\
+      \hat{I}_{L_p} &= Q_L \cdot \underline{I}\\
+      \hat{I}_{C_p} &= Q_C \cdot \underline{I}
+    \end{align*}
+
+    Die Strom- bzw. Spannungsüberhöhungen betragen demnach bei Resonanz das $Q_{L/C}$-fache der Quellgrößen.
+
   % 1.8
   \subsection{}
+  \begin{gather*}
+    \omega_0 = \frac{1}{\sqrt{LC}} = \frac{1}{\sqrt{0.1 \si{\henry} \cdot 100 \si{\nano\farad}}} = 10000 \,\ \si{\second}^{-1} \implies f_0 = 1.592 \,\ \si{\kilo\hertz}
+  \end{gather*}
+
+  \begin{multicols}{2}[][10in]
+
+    \begin{gather*}
+    \end{gather*}
+
+    %%%%%%%%%%%%%%%%%
+    \begin{gather*}
+    \end{gather*}
+
+  \end{multicols}
+
+
 
   % 1.9
   \subsection{}
