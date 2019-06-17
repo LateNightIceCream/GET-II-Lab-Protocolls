@@ -31,7 +31,6 @@
 \widowpenalty = 4500
 \clubpenalty  = 4500
 
-
 \newcommand*\dif{\mathop{}\!\mathrm{d}}
 \newcommand*\shortminus{\scalebox{0.5}[1.0]{\( - \)}}
 \newcommand{\hspa}{\hspace{0.02128623625220817\paperwidth}}
@@ -614,17 +613,96 @@
     \omega_0 = \frac{1}{\sqrt{LC}} = \frac{1}{\sqrt{0.1 \si{\henry} \cdot 100 \si{\nano\farad}}} = 10000 \,\ \si{\second}^{-1} \implies f_0 = 1.592 \,\ \si{\kilo\hertz}
   \end{gather*}
 
-  \begin{multicols}{2}[][10in]
+  \vspace{0.013155617496424828\paperheight}
 
-    \begin{gather*}
-    \end{gather*}
+  \pagebreak
+  \begin{multicols*}{2}
 
-    %%%%%%%%%%%%%%%%%
-    \begin{gather*}
-    \end{gather*}
 
-  \end{multicols}
+    \begin{center}
+      Spule\\
 
+        \begin{circuitikz}
+          \draw (-0.3819660112501051,0) to[R, l=$R_{sL}$, o-] (1.6180339887498948,0);
+          \draw (1.6180339887498948,0) to[L, l=$L_s$, -o] (1.6180339887498948*2+0.3819660112501051,0);
+        \end{circuitikz}
+
+      \begin{gather*}
+        Q_L = \frac{\omega_0 L_s}{R_{sL}}\\
+        R_{sL} = \frac{\omega_0 L_s}{Q_L} = 20 \,\ \si{\ohm}
+      \end{gather*}
+
+      \vspace{0.013155617496424828\paperheight}
+
+      \begin{circuitikz}
+
+        \def\innerwidth{3}
+        \def\innerheight{\innerwidth*0.3819660112501051}
+        \def\klemmlength{\innerheight*0.6180339887498948}
+
+        \draw (0,\innerheight/2)  to[R, l=$R_{pL}$] (\innerwidth,\innerheight/2);
+        \draw (0,-\innerheight/2) to[L, l=$L_p$] (\innerwidth,-\innerheight/2);
+        \draw (-\klemmlength,\klemmlength/4) to[short, o-] (0,\klemmlength/4);
+        \draw (0,-\innerheight/2)  to[short] (0,\innerheight/2);
+        \draw (\innerwidth,-\innerheight/2)  to[short] (\innerwidth,\innerheight/2);
+        \draw (\innerwidth,\klemmlength/4) to[short, -o] (\innerwidth+\klemmlength,\klemmlength/4);
+      \end{circuitikz}
+
+      \begin{gather*}
+        Q_L = \frac{R_{pL}}{\omega_0 L_p}\\
+        R_{pC} = Q_L \cdot \omega_0 L_p = 50 \,\ \si{\kilo\ohm}
+      \end{gather*}
+
+    \end{center}
+
+    \vfill\columnbreak
+    %%%%%%%%%%%%%%%%%%%%%%%
+    \begin{center}
+      Kondensator\\
+      \begin{circuitikz}
+        \draw (-0.3819660112501051,0) to[R, l=$R_{sC}$, o-] (1.6180339887498948,0);
+        \draw (1.6180339887498948,0) to[C, l=$C_s$, -o] (1.6180339887498948*2+0.3819660112501051,0);
+      \end{circuitikz}
+
+      \begin{gather*}
+        Q_C = \frac{1}{\omega_0 R_{sC} C_s}\\
+        R_{sC} = \frac{1}{\omega_0 Q_C C_s} = 3.3 \,\ \si{\ohm}
+      \end{gather*}
+
+      \vspace{0.013155617496424828\paperheight}
+
+      \begin{circuitikz}
+
+        \def\innerwidth{3}
+        \def\innerheight{\innerwidth*0.3819660112501051}
+        \def\klemmlength{\innerheight*0.6180339887498948}
+
+        \draw (0,\innerheight/2)  to[R, l=$R_{pC}$] (\innerwidth,\innerheight/2);
+        \draw (0,-\innerheight/2) to[C, l_=$C_p$] (\innerwidth,-\innerheight/2);
+        \draw (-\klemmlength,\klemmlength/4) to[short, o-] (0,\klemmlength/4);
+        \draw (0,-\innerheight/2)  to[short] (0,\innerheight/2);
+        \draw (\innerwidth,-\innerheight/2)  to[short] (\innerwidth,\innerheight/2);
+        \draw (\innerwidth,\klemmlength/4) to[short, -o] (\innerwidth+\klemmlength,\klemmlength/4);
+
+      \end{circuitikz}
+
+      \begin{gather*}
+        Q_C = \omega_0 R_{pC} C_p\\
+        R_{pC} = \frac{Q_C}{\omega_0 C_p} = 300 \,\ \si{\kilo\ohm}
+      \end{gather*}
+
+    \end{center}
+  \end{multicols*}
+
+  \begin{gather*}
+    Q_{SK} = \frac{1}{\dfrac{1}{Q_c}+\dfrac{1}{Q_L}} = \frac{Q_C \cdot Q_L}{Q_C + Q_L}\\
+    Q_{SK} = \frac{300}{7} \approx 42.86
+  \end{gather*}
+
+  \begin{gather*}
+    B_{\omega} = \frac{\omega_0}{Q_{SK}} = \frac{10000 \si{\second}^{-1}}{42.86} = 232.3 \,\ \si{\second}^{-1}\\
+    B_{f} = \frac{223.2\si{\second}^{-1}}{2\pi} = 37.14 \,\ \si{\hertz}
+  \end{gather*}
 
 
   % 1.9
