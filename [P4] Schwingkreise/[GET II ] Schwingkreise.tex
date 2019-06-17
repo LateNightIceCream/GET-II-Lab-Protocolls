@@ -32,8 +32,6 @@
 \clubpenalty  = 4500
 
 
-
-
 \newcommand*\dif{\mathop{}\!\mathrm{d}}
 \newcommand*\shortminus{\scalebox{0.5}[1.0]{\( - \)}}
 \newcommand{\hspa}{\hspace{0.02128623625220817\paperwidth}}
@@ -397,6 +395,49 @@
 
   % 1.5
   \subsection{}
+    $$\omega_0 = \frac{1}{\sqrt{LC}} = \frac{1}{ \sqrt{1.3 \si{\henry} \cdot 22.5 \si{\nano\farad}} } = 5834.1 \,\ \si{\second}^{-1}$$
+
+    $$\omega_0^{\text{´}} = \omega_0 \cdot \sqrt{1-\frac{R_{sL^2}}{\omega_0^2 \cdot L^2}} = 5834.1 \si{\second}^{-1} \cdot \sqrt{1-\frac{(100\si{\ohm})^2}{(5834.1 \si{\second}^{-1})^2 \cdot (1.3 \si{\henry})^2}}$$
+
+    $$\omega_0^{\text{´}} = 5833.6 \,\ \si{\second}^{-1}$$
+
+    \begin{center}
+      $\implies$ geringe Differenz $\implies$ hohe Spulengüte
+    \end{center}
+
+    Zur Berechnung von Güte und Bandbreite wird der Schwingkreis in einen idealen Parallelschwingkreis umgewandelt:
+
+    \begin{center}
+      \begin{multicols}{3}[][1in]
+        \raggedbottom
+
+          \begin{circuitikz}
+            \draw (-0.3819660112501051,0) to[R, l=$R_{sL}$, o-] (1.6180339887498948,0);
+            \draw (1.6180339887498948,0) to[L, l=$L_s$, -o] (1.6180339887498948*2+0.3819660112501051,0);
+          \end{circuitikz}
+
+        \\
+        $\implies$
+        
+        \begin{circuitikz}
+
+          \def\innerwidth{3}
+          \def\innerheight{\innerwidth*0.3819660112501051}
+          \def\klemmlength{\innerheight*0.6180339887498948}
+
+          \draw (0,\innerheight/2)  to[R, l=$R_{p}$] (\innerwidth,\innerheight/2);
+          \draw (0,-\innerheight/2) to[L, l=$L_p$] (\innerwidth,-\innerheight/2);
+          \draw (-\klemmlength,\klemmlength/4) to[short, o-] (0,\klemmlength/4);
+          \draw (0,-\innerheight/2)  to[short] (0,\innerheight/2);
+          \draw (\innerwidth,-\innerheight/2)  to[short] (\innerwidth,\innerheight/2);
+          \draw (\innerwidth,\klemmlength/4) to[short, -o] (\innerwidth+\klemmlength,\klemmlength/4);
+
+        \end{circuitikz}
+
+      \end{multicols}
+    \end{center}
+
+
 
   % 1.6
   \subsection{}
