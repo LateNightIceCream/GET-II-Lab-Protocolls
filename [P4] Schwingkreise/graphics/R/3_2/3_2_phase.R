@@ -18,7 +18,7 @@ dataY     <- data$phi
 displaydata  <- data.frame(x=dataX,   y=dataY)
 displaydata2 <- data.frame(x=data2$f, y=data2$phi)
 
-ylabel <- bquote( "U" / ~"V" )
+ylabel <- bquote( phi / ~"°" )
 xlabel <- bquote( "f" / ~"Hz")
 
 color1 <- "#00B0F6"

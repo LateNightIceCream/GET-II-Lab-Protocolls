@@ -42,6 +42,8 @@ p9 <- ggplot(displaydata, aes(dataX, dataY)) +
         ylab(ylabel)  +
 
         scale_y_continuous(limits=c(0, 1), breaks = seq(0, 6, by=0.5)) +
-        scale_x_continuous(limits=c(2500, 7500), breaks = seq(2500, 7500, by=500) )
+        scale_x_continuous(limits=c(2500, 7500), breaks = seq(2500, 7500, by=500) )+
+
+        coord_fixed(ratio=1)
 
 p9
