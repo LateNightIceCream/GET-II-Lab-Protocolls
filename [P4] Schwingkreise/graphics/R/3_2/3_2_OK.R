@@ -61,7 +61,7 @@ p9 <- ggplot(displaydata, aes(dataX, dataY)) +
         xlab(xlabel)  +
         ylab(ylabel)  +
 
-        scale_y_continuous(limits=c(-0.3, 0.3), breaks = seq(-0.3, 0.3, by=0.1)) +
+        scale_y_continuous(limits=c(-0.3, 0.3), breaks = seq(-0.5, 0.5, by=0.1)) +
         scale_x_continuous(limits=c(0, 0.8), breaks = seq(0, 0.8, by=0.1) )+
 
         coord_fixed(ratio=1)

@@ -5,6 +5,7 @@
 *.blg
 *.bbl
 *.synctex.gz
+*.ods
 Deckblatt.pdf
 *Versuch*
 logo.jpg

@@ -849,14 +849,130 @@
 
       \noindent (d)\\
 
+        \begin{figure}[H]
+          \begin{center}
+          \includegraphics[scale=0.3819660112501051]{./R/3_2/3_2_OK.pdf}
+          \caption*{Ortskurve der Spannung. Blau: (a), orange: (b)}
+          \end{center}
+        \end{figure}
+
   % 2.3
   \subsection{}
 
+
+    \begin{center}
+    Aus 3.1:\\
+    \vspace{0.013155617496424828\paperheight}
+    $f_0 = 4978.04 \,\ \si{\hertz}$\\
+    $B_f = 193.397 \,\ \si{\hertz}$\\
+    $Q = 25.74$\\
+    \vspace{0.02128623625220817\paperheight}
+    Aus 3.2:\\
+    \vspace{0.013155617496424828\paperheight}
+    $f_0 = 5000 \,\ \si{\hertz}$\\
+    $B_f = (5200 - 4830) \si{\hertz} = 370 \,\ \si{\hertz}$\\
+    $Q = 13.51$\\
+    \end{center}
+
+    Die hohe Abweichung kam hier aufgrund der ungenauen Bestimmung der Resonanzfrequenz zustande.
+
   % 2.4
   \subsection{}
+    Zur Konstanthaltung des Stroms wurde die Spannung über einem Widerstand von $R_V = 1 \,\ \si{\kilo\ohm}$ auf $1 \,\ \si{\volt}$ eingestellt und gemessen. Der Widerstand $R_s$ des Serienschwingkreises wurde zudem kurzgeschlossen.
+
+    \begin{table}[H]
+      \begin{center}
+        \begin{tabular}{@{}cccc@{}}
+        \toprule
+            $f \text{ in } \si{\hertz}$   &    $U_1 \text{ in } \si{\volt}$    &   $U \text{ in } \si{\milli\volt}$    &    $ ¸phi \text{ in } \si{\degree}$   \\ \midrule
+          2500 & 0.96   & 46.5  & 85.3  \\
+          3000 & 1.008  & 34.8  & 86.8  \\
+          3500 & 1.006  & 23.8  & 84.2  \\
+          4000 & 1.006  & 14.84 & 84.6  \\
+          4500 & 1.0064 & 7.35  & 83.2  \\
+          4900 & 1.0064 & 2.121 & 17    \\
+          5000 & 1.0063 & 1.5   & 0     \\
+          5160 & 1.0064 & 2.121 & -20   \\
+          5500 & 1.0072 & 5.98  & -70   \\
+          6000 & 1.007  & 11.37 & -80.5 \\
+          6500 & 1.0072 & 16.56 & -85.3 \\
+          7000 & 1.0064 & 21.5  & -86.3 \\
+          7500 & 1.0064 & 26.24 & -84.2 \\ \bottomrule
+        \end{tabular}
+        \caption*{Messwerte der Aufgabe 3.4}
+      \end{center}
+    \end{table}
+
+    \begin{figure}[H]
+      \begin{center}
+      \includegraphics[scale=0.3819660112501051]{./R/3_4/3_4.pdf}
+      \caption*{ Spannungsverlauf: blau, Phasenverlauf: orange}
+      \end{center}
+    \end{figure}
 
   % 2.5
   \subsection{}
+    Die Spannung wurde hier konstant auf $750 \,\ \si{\milli\volt}$ gehalten. Die Werte der Reihenwiderstände $R_s$ sind $5 \si{\ohm}$ und $10 \si{\ohm}$.\\
+
+    \begin{table}[H]
+      \begin{center}
+        \begin{tabular}{@{}ccc@{}}
+        \toprule
+          $f \text{ in } \si{\hertz}$   &   $U_L \text{ in } \si{\volt}$     &  $U_C \text{ in } \si{\volt}$      \\ \midrule
+        2500 & 0.2485 & 0.9954 \\
+        3000 & 0.4194 & 1.1611 \\
+        3500 & 0.715  & 1.457  \\
+        4000 & 1.27   & 1.968  \\
+        4500 & 2.537  & 3.068  \\
+        4900 & 3.794  & 3.851  \\
+        5000 & 3.817  & 3.722  \\
+        5160 & 3.609  & 3.309  \\
+        5500 & 2.859  & 2.321  \\
+        6000 & 2.097  & 1.444  \\
+        6500 & 1.692  & 0.9916 \\
+        7000 & 1.454  & 0.7376 \\
+        7500 & 1.301  & 0.5774 \\ \bottomrule
+        \end{tabular}
+      \caption*{Messwerte für $R_s=5 \,\ \si{\ohm}$}
+    \end{center}
+    \end{table}
+
+    \begin{table}[H]
+      \begin{center}
+      \begin{tabular}{@{}ccc@{}}
+      \toprule
+         $f \text{ in } \si{\hertz}$   &   $U_L \text{ in } \si{\volt}$     &  $U_C \text{ in } \si{\volt}$      \\ \midrule
+        2500 & 0.2432 & 0.9744 \\
+        3000 & 0.4048 & 1.1211 \\
+        3500 & 0.6607 & 1.349  \\
+        4000 & 1.0844 & 1.682  \\
+        4500 & 1.71   & 2.085  \\
+        4900 & 2.113  & 2.169  \\
+        5000 & 2.16   & 2.129  \\
+        5160 & 2.172  & 2.012  \\
+        5500 & 2.039  & 1.667  \\
+        6000 & 1.743  & 1.206  \\
+        6500 & 1.51   & 0.8865 \\
+        7000 & 1.355  & 0.6886 \\
+        7500 & 1.234  & 0.5481 \\ \bottomrule
+      \end{tabular}
+      \caption*{Messwerte für $R_s=10 \,\ \si{\ohm}$}
+    \end{center}
+    \end{table}
+
+    \begin{figure}[H]
+      \begin{center}
+      \includegraphics[scale=0.3819660112501051]{./R/3_5/3_5_UL.pdf}
+      \caption*{ $U_L$. Blau: $R_s = 5 \,\ \si{\ohm}$, orange: $R_s = 10 \,\ \si{\ohm}$}
+      \end{center}
+    \end{figure}
+
+    \begin{figure}[H]
+      \begin{center}
+      \includegraphics[scale=0.3819660112501051]{./R/3_5/3_5_UC.pdf}
+      \caption*{ $U_C$. Blau: $R_s = 5 \,\ \si{\ohm}$, orange: $R_s = 10 \,\ \si{\ohm}$}
+      \end{center}
+    \end{figure}
 
 
 \end{document}
