@@ -609,106 +609,190 @@
 
   % 1.8
   \subsection{}
-  \begin{gather*}
-    \omega_0 = \frac{1}{\sqrt{LC}} = \frac{1}{\sqrt{0.1 \si{\henry} \cdot 100 \si{\nano\farad}}} = 10000 \,\ \si{\second}^{-1} \implies f_0 = 1.592 \,\ \si{\kilo\hertz}
-  \end{gather*}
+    \begin{gather*}
+      \omega_0 = \frac{1}{\sqrt{LC}} = \frac{1}{\sqrt{0.1 \si{\henry} \cdot 100 \si{\nano\farad}}} = 10000 \,\ \si{\second}^{-1} \implies f_0 = 1.592 \,\ \si{\kilo\hertz}
+    \end{gather*}
 
-  \vspace{0.013155617496424828\paperheight}
+    \vspace{0.013155617496424828\paperheight}
 
-  \pagebreak
-  \begin{multicols*}{2}
+    \pagebreak
+    \begin{multicols*}{2}
 
 
-    \begin{center}
-      Spule\\
+      \begin{center}
+        Spule\\
+
+          \begin{circuitikz}
+            \draw (-0.3819660112501051,0) to[R, l=$R_{sL}$, o-] (1.6180339887498948,0);
+            \draw (1.6180339887498948,0) to[L, l=$L_s$, -o] (1.6180339887498948*2+0.3819660112501051,0);
+          \end{circuitikz}
+
+        \begin{gather*}
+          Q_L = \frac{\omega_0 L_s}{R_{sL}}\\
+          R_{sL} = \frac{\omega_0 L_s}{Q_L} = 20 \,\ \si{\ohm}
+        \end{gather*}
+
+        \vspace{0.013155617496424828\paperheight}
 
         \begin{circuitikz}
-          \draw (-0.3819660112501051,0) to[R, l=$R_{sL}$, o-] (1.6180339887498948,0);
-          \draw (1.6180339887498948,0) to[L, l=$L_s$, -o] (1.6180339887498948*2+0.3819660112501051,0);
+
+          \def\innerwidth{3}
+          \def\innerheight{\innerwidth*0.3819660112501051}
+          \def\klemmlength{\innerheight*0.6180339887498948}
+
+          \draw (0,\innerheight/2)  to[R, l=$R_{pL}$] (\innerwidth,\innerheight/2);
+          \draw (0,-\innerheight/2) to[L, l=$L_p$] (\innerwidth,-\innerheight/2);
+          \draw (-\klemmlength,\klemmlength/4) to[short, o-] (0,\klemmlength/4);
+          \draw (0,-\innerheight/2)  to[short] (0,\innerheight/2);
+          \draw (\innerwidth,-\innerheight/2)  to[short] (\innerwidth,\innerheight/2);
+          \draw (\innerwidth,\klemmlength/4) to[short, -o] (\innerwidth+\klemmlength,\klemmlength/4);
         \end{circuitikz}
 
-      \begin{gather*}
-        Q_L = \frac{\omega_0 L_s}{R_{sL}}\\
-        R_{sL} = \frac{\omega_0 L_s}{Q_L} = 20 \,\ \si{\ohm}
-      \end{gather*}
+        \begin{gather*}
+          Q_L = \frac{R_{pL}}{\omega_0 L_p}\\
+          R_{pC} = Q_L \cdot \omega_0 L_p = 50 \,\ \si{\kilo\ohm}
+        \end{gather*}
 
-      \vspace{0.013155617496424828\paperheight}
+      \end{center}
 
-      \begin{circuitikz}
+      \vfill\columnbreak
+      %%%%%%%%%%%%%%%%%%%%%%%
+      \begin{center}
+        Kondensator\\
+        \begin{circuitikz}
+          \draw (-0.3819660112501051,0) to[R, l=$R_{sC}$, o-] (1.6180339887498948,0);
+          \draw (1.6180339887498948,0) to[C, l=$C_s$, -o] (1.6180339887498948*2+0.3819660112501051,0);
+        \end{circuitikz}
 
-        \def\innerwidth{3}
-        \def\innerheight{\innerwidth*0.3819660112501051}
-        \def\klemmlength{\innerheight*0.6180339887498948}
+        \begin{gather*}
+          Q_C = \frac{1}{\omega_0 R_{sC} C_s}\\
+          R_{sC} = \frac{1}{\omega_0 Q_C C_s} = 3.3 \,\ \si{\ohm}
+        \end{gather*}
 
-        \draw (0,\innerheight/2)  to[R, l=$R_{pL}$] (\innerwidth,\innerheight/2);
-        \draw (0,-\innerheight/2) to[L, l=$L_p$] (\innerwidth,-\innerheight/2);
-        \draw (-\klemmlength,\klemmlength/4) to[short, o-] (0,\klemmlength/4);
-        \draw (0,-\innerheight/2)  to[short] (0,\innerheight/2);
-        \draw (\innerwidth,-\innerheight/2)  to[short] (\innerwidth,\innerheight/2);
-        \draw (\innerwidth,\klemmlength/4) to[short, -o] (\innerwidth+\klemmlength,\klemmlength/4);
-      \end{circuitikz}
+        \vspace{0.013155617496424828\paperheight}
 
-      \begin{gather*}
-        Q_L = \frac{R_{pL}}{\omega_0 L_p}\\
-        R_{pC} = Q_L \cdot \omega_0 L_p = 50 \,\ \si{\kilo\ohm}
-      \end{gather*}
+        \begin{circuitikz}
 
-    \end{center}
+          \def\innerwidth{3}
+          \def\innerheight{\innerwidth*0.3819660112501051}
+          \def\klemmlength{\innerheight*0.6180339887498948}
 
-    \vfill\columnbreak
-    %%%%%%%%%%%%%%%%%%%%%%%
+          \draw (0,\innerheight/2)  to[R, l=$R_{pC}$] (\innerwidth,\innerheight/2);
+          \draw (0,-\innerheight/2) to[C, l_=$C_p$] (\innerwidth,-\innerheight/2);
+          \draw (-\klemmlength,\klemmlength/4) to[short, o-] (0,\klemmlength/4);
+          \draw (0,-\innerheight/2)  to[short] (0,\innerheight/2);
+          \draw (\innerwidth,-\innerheight/2)  to[short] (\innerwidth,\innerheight/2);
+          \draw (\innerwidth,\klemmlength/4) to[short, -o] (\innerwidth+\klemmlength,\klemmlength/4);
+
+        \end{circuitikz}
+
+        \begin{gather*}
+          Q_C = \omega_0 R_{pC} C_p\\
+          R_{pC} = \frac{Q_C}{\omega_0 C_p} = 300 \,\ \si{\kilo\ohm}
+        \end{gather*}
+
+      \end{center}
+    \end{multicols*}
+
+    \begin{gather*}
+      Q_{SK} = \frac{1}{\dfrac{1}{Q_c}+\dfrac{1}{Q_L}} = \frac{Q_C \cdot Q_L}{Q_C + Q_L}\\
+      Q_{SK} = \frac{300}{7} \approx 42.86
+    \end{gather*}
+
+    \begin{gather*}
+      B_{\omega} = \frac{\omega_0}{Q_{SK}} = \frac{10000 \si{\second}^{-1}}{42.86} = 232.3 \,\ \si{\second}^{-1}\\
+      B_{f} = \frac{223.2\si{\second}^{-1}}{2\pi} = 37.14 \,\ \si{\hertz}
+    \end{gather*}
+
+    Messfrequenz:
+    $$f_0 = 1.59 \,\ \si{\kilo\hertz} \implies \text{geringere Güte} \implies B_{f} = 116.6 \,\ \si{\hertz}$$
+
+    $$Q_{\text{mess}} = \frac{f_0}{B_f} = 13.64$$
+
+    Modell:\\
     \begin{center}
-      Kondensator\\
       \begin{circuitikz}
-        \draw (-0.3819660112501051,0) to[R, l=$R_{sC}$, o-] (1.6180339887498948,0);
-        \draw (1.6180339887498948,0) to[C, l=$C_s$, -o] (1.6180339887498948*2+0.3819660112501051,0);
+        \draw (-1,0) to[R, l=$R_D$, o-] (2,0)
+                    to[R, l=$R_{sL}$] (4,0)
+                    to[L, l=$L_s$] (6,0)
+                    to[R, l=$R_{sC}$] (8,0)
+                    to[C, l=$C_{s}$, -o] (10,0);
       \end{circuitikz}
-
-      \begin{gather*}
-        Q_C = \frac{1}{\omega_0 R_{sC} C_s}\\
-        R_{sC} = \frac{1}{\omega_0 Q_C C_s} = 3.3 \,\ \si{\ohm}
-      \end{gather*}
-
-      \vspace{0.013155617496424828\paperheight}
-
-      \begin{circuitikz}
-
-        \def\innerwidth{3}
-        \def\innerheight{\innerwidth*0.3819660112501051}
-        \def\klemmlength{\innerheight*0.6180339887498948}
-
-        \draw (0,\innerheight/2)  to[R, l=$R_{pC}$] (\innerwidth,\innerheight/2);
-        \draw (0,-\innerheight/2) to[C, l_=$C_p$] (\innerwidth,-\innerheight/2);
-        \draw (-\klemmlength,\klemmlength/4) to[short, o-] (0,\klemmlength/4);
-        \draw (0,-\innerheight/2)  to[short] (0,\innerheight/2);
-        \draw (\innerwidth,-\innerheight/2)  to[short] (\innerwidth,\innerheight/2);
-        \draw (\innerwidth,\klemmlength/4) to[short, -o] (\innerwidth+\klemmlength,\klemmlength/4);
-
-      \end{circuitikz}
-
-      \begin{gather*}
-        Q_C = \omega_0 R_{pC} C_p\\
-        R_{pC} = \frac{Q_C}{\omega_0 C_p} = 300 \,\ \si{\kilo\ohm}
-      \end{gather*}
-
     \end{center}
-  \end{multicols*}
 
-  \begin{gather*}
-    Q_{SK} = \frac{1}{\dfrac{1}{Q_c}+\dfrac{1}{Q_L}} = \frac{Q_C \cdot Q_L}{Q_C + Q_L}\\
-    Q_{SK} = \frac{300}{7} \approx 42.86
-  \end{gather*}
+    \begin{gather*}
+      B_{\omega} = \frac{R_{\text{res.}}}{L_s} \implies R_{\text{res.}} = 2 \pi \cdot B_f \cdot L_s = 73.26 \,\ \si{\ohm}\\
+      R_D = R_{\text{res.}} - R_{sC} - R_{sL} = 49.9 \,\ \si{\ohm} \approx 50 \,\ \si{\ohm}
+    \end{gather*}
 
-  \begin{gather*}
-    B_{\omega} = \frac{\omega_0}{Q_{SK}} = \frac{10000 \si{\second}^{-1}}{42.86} = 232.3 \,\ \si{\second}^{-1}\\
-    B_{f} = \frac{223.2\si{\second}^{-1}}{2\pi} = 37.14 \,\ \si{\hertz}
-  \end{gather*}
+    % 1.9
+    \subsection{}
+      Anwendungen von Schwingkreisen:
+      \begin{itemize}
+        \item{Filter}
+        \item{Blindstromkompensation}
+      \end{itemize}
 
-
-  % 1.9
-  \subsection{}
 
 \section{Versuchsaufgaben}
+
+  % 2.1
+  \subsection{}
+    % Please add the following required packages to your document preamble:
+    % \usepackage{booktabs}
+    \begin{table}[H]
+      \begin{center}
+      \begin{tabular}{@{}ccccc@{}}
+        \toprule
+          $C$   &    $R_{pC}$    &    $R_{sC}$    &      $Q_C$      &    $\phi_C$    \\ \midrule
+        $995.97 \,\ \si{\nano\farad}$ & $4.7278 \,\ \si{\kilo\ohm}$ & $213.42 \,\ \si{\milli\ohm}$ & $153.374233$ & $89.624 \si{\degree}$ \\ \bottomrule
+      \end{tabular}
+      \caption*{Werte des Kondensators}
+    \end{center}
+    \end{table}
+
+    \begin{table}[H]
+    \begin{center}
+    \begin{tabular}{@{}ccccc@{}}
+    \toprule
+    $L$   &    $R_{sL}$    &    $R_{pL}$    &      $Q_L$      &    $\phi_L$  \\ \midrule
+    $1.0263 \,\ \si{\milli\henry}$ & $1.0466 \,\ \si{\ohm}$ & $994.19 \,\ \si{\ohm}$ & $30.838$ & $88.14 \si{\degree}$ \\ \bottomrule
+    \end{tabular}
+    \caption*{Werte der Spule}
+    \end{center}
+    \end{table}
+
+
+    \begin{multicols*}{2}
+      \begin{center}
+      \small Reihenschwingkreis:
+      $$\omega_0 = 31278.1 \,\ \si{\second}^{-1}$$
+      $$Q_{RSK} = \frac{153.37 \cdot 30.838}{153.37+30.838} = 25.74$$
+      $$B_{\omega} = \frac{31278.1 \si{\second}^{-1}}{25.74} = 1215.15 \,\ \si{\second}^{-1}$$
+      \vfill\columnbreak
+      \small Parallelschwingkreis:
+      $$\omega_0 = 31278.1 \,\ \si{\second}^{-1} $$
+      $$Q_{PSK} = \frac{153.37 \cdot 30.838}{153.37+30.838} = 25.74$$
+      $$B_{\omega} = \frac{31278.1 \si{\second}^{-1}}{25.74} = 1215.15 \,\ \si{\second}^{-1}$$
+      \end{center}
+    \end{multicols*}
+
+
+
+
+
+
+  % 2.2
+  \subsection{}
+
+  % 2.3
+  \subsection{}
+
+  % 2.4
+  \subsection{}
+
+  % 2.5
+  \subsection{}
 
 
 \end{document}
